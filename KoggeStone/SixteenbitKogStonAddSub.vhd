@@ -9,7 +9,8 @@ entity SixteenbitKogStonAddSub is
 port ( a, b : in std_logic_vector (15 downto 0);
 cin: in std_logic;
 sum: out std_logic_vector (15 downto 0);
-cout: out std_logic);
+cout: out std_logic;
+z: out std_logic);
 end entity;
 
 architecture Behavioral of SixteenbitKogStonAddSub is
@@ -27,7 +28,7 @@ architecture Behavioral of SixteenbitKogStonAddSub is
     signal g_3, p_3 : std_logic_vector(15 downto 0);
 	 
 	 -- Stage 4
-	 signal g_4, p_4 : std_logic_vector(15 downto 0);
+	 signal g_4, p_4, sum_temp : std_logic_vector(15 downto 0);
     
 	 
 component XOR_gate
@@ -156,10 +157,13 @@ begin
 	
 	Stage_5 : 
         for i in 1 to 15 generate
-            map_car_4: component XOR_gate port map (g_4(i-1), p_0(i), sum(i));
+            map_car_4: component XOR_gate port map (g_4(i-1), p_0(i), sum_temp(i));
         end generate;
-		  
-	Chip_sum : XOR_gate
-	port map(p_0(0), cin, sum(0));
+	
+	Chip_sum_temp : XOR_gate
+	port map(p_0(0), cin, sum_temp(0));
+	
+	z <= '1' when sum_temp="0000000000000000" else '0'; 
+	sum <= sum_temp;
     
 end Behavioral;
