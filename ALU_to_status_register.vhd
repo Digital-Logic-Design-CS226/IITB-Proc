@@ -16,7 +16,8 @@ Z_flag: in std_logic;
 op : in std_logic_vector;
 z: out std_logic_vector (15 downto 0);
 C_out: out std_logic;
-Z_out: out std_logic);
+Z_out: out std_logic
+to_update : out std_logic);
 end entity;
 
 architecture behaviour of ALU is 
@@ -64,5 +65,7 @@ Z_temp <= Z_temp_1 when op = '1' else Z_temp_2;
 
 C_out <= C_temp when condition = '1' else C_flag;
 Z_out <= Z_temp when condition = '1' else Z_flag;
+
+to_update <= condition;
 
 end behaviour;
