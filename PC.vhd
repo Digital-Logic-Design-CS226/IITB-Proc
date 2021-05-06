@@ -7,7 +7,7 @@ use ieee.std_logic_1164.all;
 
 entity PC  is
 port ( indata : in std_logic_vector (15 downto 0);
-pc_wrt_s2 : in std_logic;
+pc_wrt : in std_logic;
 outdata : out std_logic_vector (15 downto 0);
 clk: in std_logic;
 rst: in std_logic);
@@ -23,7 +23,7 @@ begin
 	if(rising_edge(clk)) or (falling_edge(rst)) then
 			if(rst = '0') then
 				output <= (others => '0');
-			elsif (pc_wrt_s2 = '1') then
+			elsif (pc_wrt = '1') then
 				output <= indata;
 			end if;
 	end if;
