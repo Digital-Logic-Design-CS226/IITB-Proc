@@ -13,7 +13,7 @@ instruction : out std_logic_vector (15 downto 0);
 clk: in std_logic);
 end entity;
 
-architecture behaviour of memory is
+architecture behaviour of Instruction_memory is
 
 signal output : std_logic_vector(15 downto 0) := (others => '0');
 --2^16 short word memory
