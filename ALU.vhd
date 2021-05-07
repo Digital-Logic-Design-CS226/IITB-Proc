@@ -49,7 +49,7 @@ begin
 	process(clk)
 	begin
 	if(rising_edge(clk)) then
-			if(decide = '1') then
+			if(decide = '0') then
 				output_temp <= output_temp1;
 				outz_temp <= outz_temp1;
 			else
