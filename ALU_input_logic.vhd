@@ -7,8 +7,7 @@ use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
 
 entity ALU_input_logic is
-	port ( clk : in std_logic;
-			 opcode : in std_logic_vector (3 downto 0);
+	port ( opcode : in std_logic_vector (3 downto 0);
 			 ra,rb,imm6,imm9,pc, la_sa : in std_logic_vector (15 downto 0);
 			 pc_update : in std_logic;
 			 alu_a, alu_b : out std_logic_vector (15 downto 0);
@@ -26,9 +25,8 @@ begin
 	alu_a <= alu_a_store;
 	alu_b <= alu_b_store;
 	to_nand <= to_nand_store;
-	process(clk)
+	process(opcode, ra, rb, imm6, imm9, pc, la_sa, pc_update)
 	begin
-		if (rising_edge(clk)) then	
 			if (pc_update='1') then
 				if (opcode="1100" and ra=rb) then -- BEQ
 					alu_a_store <= pc;
@@ -68,7 +66,6 @@ begin
 					to_nand_store <= '0';
 				end if;
 			end if;
-		end if;
 	end process;
 end behavourial;
 				

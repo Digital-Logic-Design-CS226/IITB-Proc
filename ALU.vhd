@@ -13,8 +13,7 @@ in2 : in std_logic_vector (15 downto 0);
 outc : out std_logic;
 outz : out std_logic;
 decide : in std_logic;
-output : out std_logic_vector (15 downto 0);
-clk: in std_logic);
+output : out std_logic_vector (15 downto 0));
 end entity;
 
 architecture behaviour of ALU is
@@ -46,17 +45,15 @@ begin
 	ADD : component SixteenbitKogStonAddSub port map (in1 , in2, '0', output_temp1, outc_temp, outz_temp);
 	NAND_map : component SixteenbitNAND port map (in1 , in2, output_temp2, outz_temp2);
 
-	process(clk)
+	process(in1, in2, decide)
 	begin
-	if(rising_edge(clk)) then
-			if(decide = '0') then
-				output_temp <= output_temp1;
-				outz_temp <= outz_temp1;
-			else
-				output_temp <= output_temp2;
-				outz_temp <= outz_temp2;
-			end if;
-	end if;
+		if(decide = '0') then
+			output_temp <= output_temp1;
+			outz_temp <= outz_temp1;
+		else
+			output_temp <= output_temp2;
+			outz_temp <= outz_temp2;
+		end if;
 	end process;
 	outc <= outc_temp;
 	outz <= outz_temp;
