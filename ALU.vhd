@@ -1,3 +1,4 @@
+
 library work;
 use work.all;
 
@@ -42,7 +43,7 @@ z: out std_logic);
 end component;
 
 begin
-	ADD : component SixteenbitKogStonAddSub port map (in1 , in2, '0', output_temp1, outc_temp, outz_temp);
+	ADD : component SixteenbitKogStonAddSub port map (in1 , in2, '0', output_temp1, outc_temp, outz_temp1);
 	NAND_map : component SixteenbitNAND port map (in1 , in2, output_temp2, outz_temp2);
 
 	process(in1, in2, decide)
