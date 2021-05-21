@@ -33,8 +33,8 @@ begin
 	if(rising_edge(clk)) then
 		if (reg_write = '1') then
 			to_update <= ((not(C_in) and not(Z_in) ) or ( C_in and registers(0) and not(Z_in) ) or ( Z_in and registers(1) and not(C_in) ));
-			registers(1) <= ( (to_update and C_alu) or ( not(to_update) and registers(0) ) );
-			registers(0) <= ( (to_update and Z_alu) or ( not(to_update) and registers(1) ) );
+			registers(0) <= ( (to_update and Z_alu) or ( not(to_update) and registers(0) ) );
+			registers(1) <= ( (to_update and C_alu) or ( not(to_update) and registers(1) ) );
 		end if;
 	end if;
 	end process;
