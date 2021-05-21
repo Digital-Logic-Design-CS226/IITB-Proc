@@ -63,6 +63,8 @@ begin
 				nstate <= S0;
 			when S0 => --ir write
 				nstate <= S1;
+				which_reg_t <= "000";
+				counter <= 0;
 --				if opcode="0000" or opcode="0010" or opcode="0001" or opcode="0100" then
 --					nstate <= S1; 
 --				elsif opcode="0011" then
@@ -117,7 +119,7 @@ begin
 				if opcode="0100" or opcode="0110" then
 					nstate <= S3;
 				end if;
-				which_reg_t <= std_logic_vector(to_unsigned(counter), 3));
+				which_reg_t <= std_logic_vector(to_unsigned(counter,3));
 			when S7 => --mem write
 				if opcode="0101" then
 					nstate <= S4;
@@ -134,7 +136,7 @@ begin
 					nstate <= S6;
 				elsif opcode="0111" then
 					nstate <= S7;
-					which_reg_t <= std_logic_vector(to_unsigned(counter), 3));
+					which_reg_t <= std_logic_vector(to_unsigned(counter,3));
 				end if;
 					
 				
@@ -157,9 +159,9 @@ begin
 				LA_SA_reg_write_t <= '0';
 				mem_read_t <= '0';
 				mem_write_t <= '0';
-				which_reg_t <= "000";
+--				which_reg_t <= "000";
 				SA_which_reg_control_t <= '0';
-				counter <= 0;
+--				counter <= 0;
 
 			when S0 => --ir write
 				pc_wrt_t <= '0';
@@ -171,7 +173,7 @@ begin
 				LA_SA_reg_write_t <= '0';
 				mem_read_t <= '0';
 				mem_write_t <= '0';
-				which_reg_t <= "000";
+--				which_reg_t <= "000";
 				SA_which_reg_control_t <= '0';
 				
 			when S1 => --reg read
@@ -198,7 +200,7 @@ begin
 				LA_SA_reg_write_t <= '0';
 				mem_read_t <= '0';
 				mem_write_t <= '0';
-				which_reg_t <= "000";
+--				which_reg_t <= "000";
 				SA_which_reg_control_t <= '0';
 				
 			when S3 => --reg write
@@ -241,7 +243,7 @@ begin
 --				which_reg_t <= "000";
 				SA_which_reg_control_t <= '0';
 				
-		`	when S6 => --mem read
+			when S6 => --mem read
 				pc_wrt_t <= '0';
 				ir_write_t <= '0';
 				reg_read_t <= '0';
@@ -277,20 +279,30 @@ begin
 				mem_read_t <= '0';
 				mem_write_t <= '0';
 --				which_reg_t <= "000";
---				SA_which_reg_control_t <= '0';
-				
-			when 
-				
+--				SA_which_reg_control_t <= '0';		
 				
 				
 			
 			
 		end case;
+	end if;
+	end process;
 	
 	--assign Si based on OPcode
 	
 	--assign output based on Si
-	outc <= outc_temp;
-	outz <= outz_temp;
-	output <= output_temp;
+--	outc <= outc_temp;
+--	outz <= outz_temp;
+--	output <= output_temp;
+	pc_wrt <= pc_wrt_t ;
+	ir_write <= ir_write_t; 
+	reg_read <= reg_read_t ;
+	reg_write <= reg_write_t ;
+	pc_update <= pc_update_t ;
+	status_reg_write <= status_reg_write_t ;
+	LA_SA_reg_write <= LA_SA_reg_write_t ;
+	mem_read <= mem_read_t ;
+	mem_write <= mem_write_t ;
+	which_reg <= which_reg_t ;
+	SA_which_reg_control <= SA_which_reg_control_t ;
 end behaviour;

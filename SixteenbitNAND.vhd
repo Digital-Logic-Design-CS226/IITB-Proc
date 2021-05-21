@@ -21,7 +21,7 @@ port(A, B: in std_logic; O: out std_logic);
 end component;
 
 component NOT_gate
-port(A, B: in std_logic; O: out std_logic);
+port(A: in std_logic; O: out std_logic);
 end component;
 
 begin

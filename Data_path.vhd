@@ -8,7 +8,7 @@ use ieee.numeric_std.all;
 
 
 entity Data_path  is
-port ( opcode_out : out std_logic_vector (15 downto 0);
+port ( opcode_out : out std_logic_vector (3 downto 0);
 pc_wrt : in std_logic;
 ir_write : in std_logic;
 reg_read : in std_logic;
@@ -29,7 +29,7 @@ architecture behaviour of Data_path is
 signal pc_in : std_logic_vector(15 downto 0) := (others => '0');
 signal pc_out : std_logic_vector(15 downto 0);
 signal instruction : std_logic_vector(15 downto 0);
-signal opcode: std_logic_vector(2 downto 0);
+signal opcode: std_logic_vector(3 downto 0);
 signal RA : std_logic_vector(2 downto 0);
 signal RB : std_logic_vector(2 downto 0);
 signal RC : std_logic_vector(2 downto 0);
@@ -86,8 +86,8 @@ R1 : in std_logic_vector (2 downto 0);
 R2 : in std_logic_vector (2 downto 0);
 R3 : in std_logic_vector (2 downto 0);
 which_reg : in std_logic_vector (2 downto 0);
-output : out std_logic_vector (2 downto 0);
-clk: in std_logic);
+output : out std_logic_vector (2 downto 0));
+
 end component;
 
 component Register_file
@@ -198,10 +198,10 @@ chip_IM : Instruction_memory
 port map(pc_out, instruction);
 
 chip_IR : Instruction_register
-port map(instruction, opcode, RA, RB, RC, cz, imm6, imm9);
+port map(instruction, ir_write, opcode, RA, RB, RC, cz, imm6, imm9);
 
 chip_RF_ip : RF_input_process 
-port map(opcode, RA, RB, RC, which_reg, RF_R3, clk);
+port map(opcode, RA, RB, RC, which_reg, RF_R3);
 
 chip_RF : Register_file
 port map(RA_RF, RB, RF_R3, reg_read, reg_write, data_RF_in , out_RA, out_RB, clk);

@@ -20,8 +20,8 @@ signal output : std_logic_vector(15 downto 0) := (others => '0');
 begin
 	process(clk, rst)
 	begin
-	if(rising_edge(clk)) or (falling_edge(rst)) then
-			if(rst = '0') then
+	if (rising_edge(clk)) then
+			if(rst = '1') then
 				output <= (others => '0');
 			elsif (pc_wrt = '1') then
 				output <= indata;
