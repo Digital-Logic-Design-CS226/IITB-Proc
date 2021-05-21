@@ -16,8 +16,11 @@ architecture behaviour of Sign_extender_six is
 
 signal output_temp : std_logic_vector(15 downto 0);
 
- 
+
 begin
-	output_temp <= std_logic_vector(resize(signed(input), output_temp'length));
+	process(input)
+	begin
+		output_temp <= std_logic_vector(resize(signed(input), output_temp'length));
+	end process;
 	output <= output_temp;
 end behaviour;
