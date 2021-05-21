@@ -10,6 +10,7 @@ use ieee.numeric_std.all;
 entity Data_path  is
 port ( opcode_out : out std_logic_vector (15 downto 0);
 pc_wrt : in std_logic;
+ir_write : in std_logic;
 reg_read : in std_logic;
 reg_write : in std_logic;
 pc_update : in std_logic;
@@ -69,6 +70,7 @@ end component;
 
 component Instruction_register
 port ( indata : in std_logic_vector (15 downto 0);
+ir_write : in std_logic;
 opcode : out std_logic_vector (3 downto 0);
 R1 : out std_logic_vector (2 downto 0);
 R2 : out std_logic_vector (2 downto 0);
