@@ -16,6 +16,14 @@ reg_write : in std_logic;
 data_write : in std_logic_vector (15 downto 0);
 out_R1 : out std_logic_vector (15 downto 0);
 out_R2 : out std_logic_vector (15 downto 0);
+reg_0 : out std_logic_vector(15 downto 0);
+reg_1 : out std_logic_vector(15 downto 0);
+reg_2 : out std_logic_vector(15 downto 0);
+reg_3 : out std_logic_vector(15 downto 0);
+reg_4 : out std_logic_vector(15 downto 0);
+reg_5 : out std_logic_vector(15 downto 0);
+reg_6 : out std_logic_vector(15 downto 0);
+reg_7 : out std_logic_vector(15 downto 0);
 clk: in std_logic);
 end entity;
 
@@ -26,9 +34,14 @@ signal out_R2_temp : std_logic_vector(15 downto 0) := (others => '0');
 --8 16-bit registers
 type reg is array(7 downto 0) of std_logic_vector(15 downto 0);
 signal registers: reg;
+
  
 begin
-	process(clk)
+
+
+
+
+	process(clk, reg_write, reg_read)
 	begin
 	if(rising_edge(clk)) then
 			if (reg_write = '1') then
@@ -41,4 +54,14 @@ begin
 	end process;
 	out_R1 <= out_R1_temp;
 	out_R2 <= out_R2_temp;
+	
+	reg_0 <= registers(0);
+	reg_1 <= registers(1);
+	reg_2 <= registers(2);
+	reg_3 <= registers(3);
+	reg_4 <= registers(4);
+	reg_5 <= registers(5);
+	reg_6 <= registers(6);
+	reg_7 <= registers(7);
+	
 end behaviour;

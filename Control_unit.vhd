@@ -42,6 +42,7 @@ signal mem_write_t : std_logic;
 signal which_reg_t : std_logic_vector(2 downto 0);
 signal SA_which_reg_control_t : std_logic;
 signal counter : integer range 0 to 7;
+signal cycle_number : integer range 0 to 7;
 
 begin
 	process(clk, rst)
@@ -62,7 +63,11 @@ begin
 			when start =>
 				nstate <= S0;
 			when S0 => --ir write
-				nstate <= S1;
+				if opcode = "0011" then
+					nstate <= S3;
+				else
+					nstate <= S1;
+				end if;
 				which_reg_t <= "000";
 				counter <= 0;
 --				if opcode="0000" or opcode="0010" or opcode="0001" or opcode="0100" then
@@ -71,8 +76,11 @@ begin
 --					nstate <= S2;
 --				end if;
 			when S1 => --reg read
-				if opcode="0000" or opcode="0010" or opcode="0001" or opcode="0100" then --or opcode="0101" then
+				if (cycle_number = 4) and (opcode="0000" or opcode="0010" or opcode="0001" or opcode="0100") then --or opcode="0101" then
+					cycle_number <= 0;
 					nstate <= S2;
+				elsif (opcode="0000" or opcode="0010" or opcode="0001" or opcode="0100") then 
+					cycle_number <= cycle_number + 1;
 				elsif opcode="0011" then
 					nstate <= S3;
 				elsif opcode="1100" or opcode="1000" or opcode="1001" then
@@ -114,7 +122,7 @@ begin
 --				elsif 
 --				end if;
 			when S5 => --pc write
-				nstate <= S0;
+				nstate <= start;
 			when S6 => --mem read
 				if opcode="0100" or opcode="0110" then
 					nstate <= S3;

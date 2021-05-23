@@ -25,9 +25,9 @@ begin
 		if(opcode = "0001") or (opcode = "0001") or (opcode = "0010") then
 			output <= ALU_out;
 		elsif (opcode = "0011") then
-			imm9_temp(15 downto 7) <= imm9;
-			imm9_temp(6 downto 0) <= "0000000";
-			output <= imm9_temp;
+			output(15 downto 7) <= imm9;
+			output(6 downto 0) <= "0000000";
+			--output <= imm9_temp;
 		elsif (opcode = "1000") or (opcode = "1001") then
 			output <= PC;
 		elsif (opcode = "0100") or (opcode = "0110") then

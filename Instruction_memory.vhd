@@ -24,12 +24,12 @@ type mem is array(2**16-1 downto 0) of std_logic_vector(15 downto 0);
 
 
 impure function init_ram_hex return mem is
-  file text_file : text open read_mode is "ram_content_hex.txt";
+  file text_file : text open read_mode is "D:\IITB\Semester 4\CS 226\Project\IITB-Proc\ram_content_hex.txt";
   variable text_line : line;
   variable ram_content : mem;
   variable bv : bit_vector(ram_content(0)'range);
 begin
-  for i in 0 to lines_in_file loop
+  for i in 0 to lines_in_file - 1 loop
     readline(text_file, text_line);
     read(text_line, bv);
     ram_content(i) := To_StdLogicVector(bv);

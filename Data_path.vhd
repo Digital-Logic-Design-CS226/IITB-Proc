@@ -9,6 +9,7 @@ use ieee.numeric_std.all;
 
 entity Data_path  is
 port ( opcode_out : out std_logic_vector (3 downto 0);
+indata_received : out std_logic_vector (15 downto 0);
 pc_wrt : in std_logic;
 ir_write : in std_logic;
 reg_read : in std_logic;
@@ -20,6 +21,20 @@ mem_read : in std_logic;
 mem_write : in std_logic;
 which_reg : in std_logic_vector(2 downto 0);
 SA_which_reg_control : in std_logic;
+reg_0 : out std_logic_vector(15 downto 0);
+reg_1 : out std_logic_vector(15 downto 0);
+reg_2 : out std_logic_vector(15 downto 0);
+reg_3 : out std_logic_vector(15 downto 0);
+reg_4 : out std_logic_vector(15 downto 0);
+reg_5 : out std_logic_vector(15 downto 0);
+reg_6 : out std_logic_vector(15 downto 0);
+reg_7 : out std_logic_vector(15 downto 0);
+PC_out_1 : out std_logic_vector(15 downto 0);
+Instruction_returned : out std_logic_vector(15 downto 0);
+data_RF_out : out std_logic_vector(15 downto 0);
+ALU_output_tb : out std_logic_vector(15 downto 0);
+ALU_A_out : out std_logic_vector (15 downto 0);
+ALU_B_out : out std_logic_vector (15 downto 0);
 clk: in std_logic;
 rst: in std_logic);
 end entity;
@@ -69,7 +84,9 @@ instruction : out std_logic_vector (15 downto 0));
 end component;
 
 component Instruction_register
-port ( indata : in std_logic_vector (15 downto 0);
+port ( clk : in std_logic;
+indata : in std_logic_vector (15 downto 0);
+indata_received : out std_logic_vector (15 downto 0);
 ir_write : in std_logic;
 opcode : out std_logic_vector (3 downto 0);
 R1 : out std_logic_vector (2 downto 0);
@@ -99,6 +116,14 @@ reg_write : in std_logic;
 data_write : in std_logic_vector (15 downto 0);
 out_R1 : out std_logic_vector (15 downto 0);
 out_R2 : out std_logic_vector (15 downto 0);
+reg_0 : out std_logic_vector(15 downto 0);
+reg_1 : out std_logic_vector(15 downto 0);
+reg_2 : out std_logic_vector(15 downto 0);
+reg_3 : out std_logic_vector(15 downto 0);
+reg_4 : out std_logic_vector(15 downto 0);
+reg_5 : out std_logic_vector(15 downto 0);
+reg_6 : out std_logic_vector(15 downto 0);
+reg_7 : out std_logic_vector(15 downto 0);
 clk: in std_logic);
 end component;
 
@@ -130,7 +155,8 @@ to_nand : out std_logic);
 end component;
 
 component ALU
-port ( in1 : in std_logic_vector (15 downto 0);
+port ( clk : in std_logic;
+in1 : in std_logic_vector (15 downto 0);
 in2 : in std_logic_vector (15 downto 0);
 outc : out std_logic;
 outz : out std_logic;
@@ -198,13 +224,13 @@ chip_IM : Instruction_memory
 port map(pc_out, instruction);
 
 chip_IR : Instruction_register
-port map(instruction, ir_write, opcode, RA, RB, RC, cz, imm6, imm9);
+port map(clk, instruction, indata_received, ir_write, opcode, RA, RB, RC, cz, imm6, imm9);
 
 chip_RF_ip : RF_input_process 
 port map(opcode, RA, RB, RC, which_reg, RF_R3);
 
 chip_RF : Register_file
-port map(RA_RF, RB, RF_R3, reg_read, reg_write, data_RF_in , out_RA, out_RB, clk);
+port map(RA_RF, RB, RF_R3, reg_read, reg_write, data_RF_in , out_RA, out_RB, reg_0, reg_1, reg_2, reg_3, reg_4, reg_5, reg_6, reg_7, clk);
 
 chip_RF_data_in : RF_datain_process
 port map(opcode, imm9, mem_out, pc_out, ALU_out, data_RF_in);
@@ -219,7 +245,7 @@ chip_ALU_input_logic : ALU_input_logic
 port map(opcode, out_RA, out_RB, imm6_ext, imm9_ext, pc_out, LA_SA_wire, pc_update, ALU_A, ALU_B, to_nand);
 
 chip_ALU : ALU
-port map(ALU_A, ALU_B, ALU_c, ALU_z, to_nand, ALU_out);
+port map(clk, ALU_A, ALU_B, ALU_c, ALU_z, to_nand, ALU_out);
 
 chip_SReg : Status_Registers
 port map(cz(1), cz(0), ALU_c, ALU_z, status_reg_write, C_out, Z_out, clk);
@@ -240,5 +266,11 @@ chip_RF_RA_input : RF_RA_input
 port map(RA, which_reg, SA_which_reg_control, RA_RF);
 
 opcode_out <= opcode;
+PC_out_1 <= pc_out;
+Instruction_returned <= instruction;
+data_RF_out <= data_RF_in;
+ALU_output_tb <= ALU_out;
+ALU_A_out <= ALU_A;
+ALU_B_out <= ALU_B;
 
 end behaviour;

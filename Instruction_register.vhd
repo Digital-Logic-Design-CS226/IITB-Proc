@@ -6,7 +6,9 @@ library IEEE;
 use ieee.std_logic_1164.all;
 
 entity Instruction_register  is
-port ( indata : in std_logic_vector (15 downto 0);
+port ( clk : in std_logic;
+indata : in std_logic_vector (15 downto 0);
+indata_received : out std_logic_vector (15 downto 0);
 ir_write : in std_logic;
 opcode : out std_logic_vector (3 downto 0);
 R1 : out std_logic_vector (2 downto 0);
@@ -28,9 +30,9 @@ signal imm6_store : std_logic_vector (5 downto 0);
 signal imm9_store : std_logic_vector (8 downto 0);
 
 begin
-	process(indata)
+	process(clk)
 	begin
-		if (ir_write = '1') then
+		--if (ir_write = '1') then
 			opcode_store <= indata(15 downto 12);
 			R1_store <= indata(11 downto 9);
 			R2_store <= indata(8 downto 6);
@@ -38,7 +40,7 @@ begin
 			cz_store <= indata(1 downto 0);
 			imm6_store <= indata(5 downto 0);
 			imm9_store <= indata(8 downto 0);
-		end if;
+		--end if;
 	end process;
 	opcode <= opcode_store;
 	R1 <= R1_store;
@@ -47,4 +49,5 @@ begin
 	cz <= cz_store;
 	imm6 <= imm6_store;
 	imm9 <= imm9_store;
+	indata_received <= indata;
 end behaviour;

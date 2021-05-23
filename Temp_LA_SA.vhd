@@ -21,7 +21,7 @@ architecture behaviour of Temp_LA_SA is
 signal store : std_logic_vector(15 downto 0) := (others => '0');
  
 begin
-	process(clk)
+	process(clk, reg_write)
 	begin
 	if(rising_edge(clk)) then
 		if (reg_write = '1') then
