@@ -33,7 +33,7 @@ signal out_R1_temp : std_logic_vector(15 downto 0) := (others => '0');
 signal out_R2_temp : std_logic_vector(15 downto 0) := (others => '0');
 --8 16-bit registers
 type reg is array(7 downto 0) of std_logic_vector(15 downto 0);
-signal registers: reg;
+signal registers: reg := (others=>(others=>'0')) ;
 
  
 begin

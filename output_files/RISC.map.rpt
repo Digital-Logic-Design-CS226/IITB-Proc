@@ -1,0 +1,1240 @@
+Analysis & Synthesis report for RISC
+Sun May 30 14:20:44 2021
+Quartus Prime Version 20.1.0 Build 711 06/05/2020 SJ Lite Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Analysis & Synthesis Summary
+  3. Analysis & Synthesis Settings
+  4. Parallel Compilation
+  5. Analysis & Synthesis Source Files Read
+  6. Analysis & Synthesis Resource Usage Summary
+  7. Analysis & Synthesis Resource Utilization by Entity
+  8. State Machine - |RISC|Control_unit:CU|nstate
+  9. State Machine - |RISC|Control_unit:CU|pstate
+ 10. User-Specified and Inferred Latches
+ 11. Logic Cells Representing Combinational Loops
+ 12. Registers Removed During Synthesis
+ 13. Removed Registers Triggering Further Register Optimizations
+ 14. General Register Statistics
+ 15. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 16. Port Connectivity Checks: "Data_path:DP|Status_Registers:chip_SReg"
+ 17. Port Connectivity Checks: "Data_path:DP|ALU:chip_ALU|SixteenbitKogStonAddSub:ADD"
+ 18. Analysis & Synthesis Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 2020  Intel Corporation. All rights reserved.
+Your use of Intel Corporation's design tools, logic functions 
+and other software and tools, and any partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Intel Program License 
+Subscription Agreement, the Intel Quartus Prime License Agreement,
+the Intel FPGA IP License Agreement, or other applicable license
+agreement, including, without limitation, that your use is for
+the sole purpose of programming logic devices manufactured by
+Intel and sold by Intel or its authorized distributors.  Please
+refer to the applicable agreement for further details, at
+https://fpgasoftware.intel.com/eula.
+
+
+
++---------------------------------------------------------------------------+
+; Analysis & Synthesis Summary                                              ;
++-----------------------------+---------------------------------------------+
+; Analysis & Synthesis Status ; Successful - Sun May 30 14:20:44 2021       ;
+; Quartus Prime Version       ; 20.1.0 Build 711 06/05/2020 SJ Lite Edition ;
+; Revision Name               ; RISC                                        ;
+; Top-level Entity Name       ; RISC                                        ;
+; Family                      ; MAX V                                       ;
+; Total logic elements        ; 159                                         ;
+; Total pins                  ; 259                                         ;
+; Total virtual pins          ; 0                                           ;
+; UFM blocks                  ; 0 / 1 ( 0 % )                               ;
++-----------------------------+---------------------------------------------+
+
+
++------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Settings                                                                              ;
++------------------------------------------------------------------+--------------------+--------------------+
+; Option                                                           ; Setting            ; Default Value      ;
++------------------------------------------------------------------+--------------------+--------------------+
+; Top-level entity name                                            ; RISC               ; RISC               ;
+; Family name                                                      ; MAX V              ; Cyclone V          ;
+; Use smart compilation                                            ; Off                ; Off                ;
+; Enable parallel Assembler and Timing Analyzer during compilation ; On                 ; On                 ;
+; Enable compact report table                                      ; Off                ; Off                ;
+; Restructure Multiplexers                                         ; Auto               ; Auto               ;
+; Create Debugging Nodes for IP Cores                              ; Off                ; Off                ;
+; Preserve fewer node names                                        ; On                 ; On                 ;
+; Intel FPGA IP Evaluation Mode                                    ; Enable             ; Enable             ;
+; Verilog Version                                                  ; Verilog_2001       ; Verilog_2001       ;
+; VHDL Version                                                     ; VHDL_1993          ; VHDL_1993          ;
+; State Machine Processing                                         ; Auto               ; Auto               ;
+; Safe State Machine                                               ; Off                ; Off                ;
+; Extract Verilog State Machines                                   ; On                 ; On                 ;
+; Extract VHDL State Machines                                      ; On                 ; On                 ;
+; Ignore Verilog initial constructs                                ; Off                ; Off                ;
+; Iteration limit for constant Verilog loops                       ; 5000               ; 5000               ;
+; Iteration limit for non-constant Verilog loops                   ; 250                ; 250                ;
+; Add Pass-Through Logic to Inferred RAMs                          ; On                 ; On                 ;
+; Infer RAMs from Raw Logic                                        ; On                 ; On                 ;
+; Parallel Synthesis                                               ; On                 ; On                 ;
+; NOT Gate Push-Back                                               ; On                 ; On                 ;
+; Power-Up Don't Care                                              ; On                 ; On                 ;
+; Remove Redundant Logic Cells                                     ; Off                ; Off                ;
+; Remove Duplicate Registers                                       ; On                 ; On                 ;
+; Ignore CARRY Buffers                                             ; Off                ; Off                ;
+; Ignore CASCADE Buffers                                           ; Off                ; Off                ;
+; Ignore GLOBAL Buffers                                            ; Off                ; Off                ;
+; Ignore ROW GLOBAL Buffers                                        ; Off                ; Off                ;
+; Ignore LCELL Buffers                                             ; Off                ; Off                ;
+; Ignore SOFT Buffers                                              ; On                 ; On                 ;
+; Limit AHDL Integers to 32 Bits                                   ; Off                ; Off                ;
+; Optimization Technique                                           ; Balanced           ; Balanced           ;
+; Carry Chain Length                                               ; 70                 ; 70                 ;
+; Auto Carry Chains                                                ; On                 ; On                 ;
+; Auto Open-Drain Pins                                             ; On                 ; On                 ;
+; Perform WYSIWYG Primitive Resynthesis                            ; Off                ; Off                ;
+; Auto Shift Register Replacement                                  ; Auto               ; Auto               ;
+; Allow Shift Register Merging across Hierarchies                  ; Auto               ; Auto               ;
+; Auto Clock Enable Replacement                                    ; On                 ; On                 ;
+; Allow Synchronous Control Signals                                ; On                 ; On                 ;
+; Force Use of Synchronous Clear Signals                           ; Off                ; Off                ;
+; Auto Resource Sharing                                            ; Off                ; Off                ;
+; Use LogicLock Constraints during Resource Balancing              ; On                 ; On                 ;
+; Ignore translate_off and synthesis_off directives                ; Off                ; Off                ;
+; Report Parameter Settings                                        ; On                 ; On                 ;
+; Report Source Assignments                                        ; On                 ; On                 ;
+; Report Connectivity Checks                                       ; On                 ; On                 ;
+; Ignore Maximum Fan-Out Assignments                               ; Off                ; Off                ;
+; Synchronization Register Chain Length                            ; 2                  ; 2                  ;
+; Power Optimization During Synthesis                              ; Normal compilation ; Normal compilation ;
+; HDL message level                                                ; Level2             ; Level2             ;
+; Suppress Register Optimization Related Messages                  ; Off                ; Off                ;
+; Number of Removed Registers Reported in Synthesis Report         ; 5000               ; 5000               ;
+; Number of Swept Nodes Reported in Synthesis Report               ; 5000               ; 5000               ;
+; Number of Inverted Registers Reported in Synthesis Report        ; 100                ; 100                ;
+; Clock MUX Protection                                             ; On                 ; On                 ;
+; Block Design Naming                                              ; Auto               ; Auto               ;
+; Synthesis Effort                                                 ; Auto               ; Auto               ;
+; Shift Register Replacement - Allow Asynchronous Clear Signal     ; On                 ; On                 ;
+; Analysis & Synthesis Message Level                               ; Medium             ; Medium             ;
+; Disable Register Merging Across Hierarchies                      ; Auto               ; Auto               ;
++------------------------------------------------------------------+--------------------+--------------------+
+
+
++------------------------------------------+
+; Parallel Compilation                     ;
++----------------------------+-------------+
+; Processors                 ; Number      ;
++----------------------------+-------------+
+; Number detected on machine ; 12          ;
+; Maximum allowed            ; 6           ;
+;                            ;             ;
+; Average used               ; 1.00        ;
+; Maximum used               ; 1           ;
+;                            ;             ;
+; Usage by Processor         ; % Time Used ;
+;     Processor 1            ; 100.0%      ;
++----------------------------+-------------+
+
+
++----------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                                   ;
++----------------------------------+-----------------+-----------------+-------------------------------------------------------------------------+---------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type       ; File Name with Absolute Path                                            ; Library ;
++----------------------------------+-----------------+-----------------+-------------------------------------------------------------------------+---------+
+; XOR_gate.vhd                     ; yes             ; User VHDL File  ; D:/IITB/Semester 4/CS 226/Project/IITB-Proc/XOR_gate.vhd                ;         ;
+; Testbench1.vhd                   ; yes             ; User VHDL File  ; D:/IITB/Semester 4/CS 226/Project/IITB-Proc/Testbench1.vhd              ;         ;
+; Temp_LA_SA.vhd                   ; yes             ; User VHDL File  ; D:/IITB/Semester 4/CS 226/Project/IITB-Proc/Temp_LA_SA.vhd              ;         ;
+; Status_Registers.vhd             ; yes             ; User VHDL File  ; D:/IITB/Semester 4/CS 226/Project/IITB-Proc/Status_Registers.vhd        ;         ;
+; SixteenbitNAND.vhd               ; yes             ; User VHDL File  ; D:/IITB/Semester 4/CS 226/Project/IITB-Proc/SixteenbitNAND.vhd          ;         ;
+; SixteenbitKogStonAddSub.vhd      ; yes             ; User VHDL File  ; D:/IITB/Semester 4/CS 226/Project/IITB-Proc/SixteenbitKogStonAddSub.vhd ;         ;
+; Sign_extender_six.vhd            ; yes             ; User VHDL File  ; D:/IITB/Semester 4/CS 226/Project/IITB-Proc/Sign_extender_six.vhd       ;         ;
+; Sign_extender_nine.vhd           ; yes             ; User VHDL File  ; D:/IITB/Semester 4/CS 226/Project/IITB-Proc/Sign_extender_nine.vhd      ;         ;
+; RISC.vhd                         ; yes             ; User VHDL File  ; D:/IITB/Semester 4/CS 226/Project/IITB-Proc/RISC.vhd                    ;         ;
+; RF_RA_input.vhd                  ; yes             ; User VHDL File  ; D:/IITB/Semester 4/CS 226/Project/IITB-Proc/RF_RA_input.vhd             ;         ;
+; RF_input_process.vhd             ; yes             ; User VHDL File  ; D:/IITB/Semester 4/CS 226/Project/IITB-Proc/RF_input_process.vhd        ;         ;
+; RF_datain_process.vhd            ; yes             ; User VHDL File  ; D:/IITB/Semester 4/CS 226/Project/IITB-Proc/RF_datain_process.vhd       ;         ;
+; Register_file.vhd                ; yes             ; User VHDL File  ; D:/IITB/Semester 4/CS 226/Project/IITB-Proc/Register_file.vhd           ;         ;
+; PC_write.vhd                     ; yes             ; User VHDL File  ; D:/IITB/Semester 4/CS 226/Project/IITB-Proc/PC_write.vhd                ;         ;
+; PC.vhd                           ; yes             ; User VHDL File  ; D:/IITB/Semester 4/CS 226/Project/IITB-Proc/PC.vhd                      ;         ;
+; OR_gate.vhd                      ; yes             ; User VHDL File  ; D:/IITB/Semester 4/CS 226/Project/IITB-Proc/OR_gate.vhd                 ;         ;
+; NOT_gate.vhd                     ; yes             ; User VHDL File  ; D:/IITB/Semester 4/CS 226/Project/IITB-Proc/NOT_gate.vhd                ;         ;
+; memory_address_input.vhd         ; yes             ; User VHDL File  ; D:/IITB/Semester 4/CS 226/Project/IITB-Proc/memory_address_input.vhd    ;         ;
+; memory.vhd                       ; yes             ; User VHDL File  ; D:/IITB/Semester 4/CS 226/Project/IITB-Proc/memory.vhd                  ;         ;
+; Instruction_register.vhd         ; yes             ; User VHDL File  ; D:/IITB/Semester 4/CS 226/Project/IITB-Proc/Instruction_register.vhd    ;         ;
+; Instruction_memory.vhd           ; yes             ; User VHDL File  ; D:/IITB/Semester 4/CS 226/Project/IITB-Proc/Instruction_memory.vhd      ;         ;
+; GroupGenerator.vhd               ; yes             ; User VHDL File  ; D:/IITB/Semester 4/CS 226/Project/IITB-Proc/GroupGenerator.vhd          ;         ;
+; generator.vhd                    ; yes             ; User VHDL File  ; D:/IITB/Semester 4/CS 226/Project/IITB-Proc/generator.vhd               ;         ;
+; Data_path.vhd                    ; yes             ; User VHDL File  ; D:/IITB/Semester 4/CS 226/Project/IITB-Proc/Data_path.vhd               ;         ;
+; Control_unit.vhd                 ; yes             ; User VHDL File  ; D:/IITB/Semester 4/CS 226/Project/IITB-Proc/Control_unit.vhd            ;         ;
+; Carry_oper.vhd                   ; yes             ; User VHDL File  ; D:/IITB/Semester 4/CS 226/Project/IITB-Proc/Carry_oper.vhd              ;         ;
+; AND_gate.vhd                     ; yes             ; User VHDL File  ; D:/IITB/Semester 4/CS 226/Project/IITB-Proc/AND_gate.vhd                ;         ;
+; ALU_input_logic.vhd              ; yes             ; User VHDL File  ; D:/IITB/Semester 4/CS 226/Project/IITB-Proc/ALU_input_logic.vhd         ;         ;
+; ALU.vhd                          ; yes             ; User VHDL File  ; D:/IITB/Semester 4/CS 226/Project/IITB-Proc/ALU.vhd                     ;         ;
++----------------------------------+-----------------+-----------------+-------------------------------------------------------------------------+---------+
+
+
++-----------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary         ;
++---------------------------------------------+-------+
+; Resource                                    ; Usage ;
++---------------------------------------------+-------+
+; Total logic elements                        ; 159   ;
+;     -- Combinational with no register       ; 120   ;
+;     -- Register only                        ; 5     ;
+;     -- Combinational with a register        ; 34    ;
+;                                             ;       ;
+; Logic element usage by number of LUT inputs ;       ;
+;     -- 4 input functions                    ; 77    ;
+;     -- 3 input functions                    ; 47    ;
+;     -- 2 input functions                    ; 30    ;
+;     -- 1 input functions                    ; 0     ;
+;     -- 0 input functions                    ; 0     ;
+;                                             ;       ;
+; Logic elements by mode                      ;       ;
+;     -- normal mode                          ; 159   ;
+;     -- arithmetic mode                      ; 0     ;
+;     -- qfbk mode                            ; 0     ;
+;     -- register cascade mode                ; 0     ;
+;     -- synchronous clear/load mode          ; 0     ;
+;     -- asynchronous clear/load mode         ; 0     ;
+;                                             ;       ;
+; Total registers                             ; 39    ;
+; I/O pins                                    ; 259   ;
+; Maximum fan-out node                        ; clk   ;
+; Maximum fan-out                             ; 39    ;
+; Total fan-out                               ; 626   ;
+; Average fan-out                             ; 1.50  ;
++---------------------------------------------+-------+
+
+
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                                                                                                                                                                               ;
++------------------------------------------------------+-------------+--------------+------------+------+--------------+--------------+-------------------+------------------+-----------------+------------+------------------------------------------------------------------------------------------------------------------------------+-------------------------+--------------+
+; Compilation Hierarchy Node                           ; Logic Cells ; LC Registers ; UFM Blocks ; Pins ; Virtual Pins ; LUT-Only LCs ; Register-Only LCs ; LUT/Register LCs ; Carry Chain LCs ; Packed LCs ; Full Hierarchy Name                                                                                                          ; Entity Name             ; Library Name ;
++------------------------------------------------------+-------------+--------------+------------+------+--------------+--------------+-------------------+------------------+-----------------+------------+------------------------------------------------------------------------------------------------------------------------------+-------------------------+--------------+
+; |RISC                                                ; 159 (0)     ; 39           ; 0          ; 259  ; 0            ; 120 (0)      ; 5 (0)             ; 34 (0)           ; 0 (0)           ; 0 (0)      ; |RISC                                                                                                                        ; RISC                    ; work         ;
+;    |Control_unit:CU|                                 ; 33 (33)     ; 23           ; 0          ; 0    ; 0            ; 10 (10)      ; 5 (5)             ; 18 (18)          ; 0 (0)           ; 0 (0)      ; |RISC|Control_unit:CU                                                                                                        ; Control_unit            ; work         ;
+;    |Data_path:DP|                                    ; 126 (0)     ; 16           ; 0          ; 0    ; 0            ; 110 (0)      ; 0 (0)             ; 16 (0)           ; 0 (0)           ; 0 (0)      ; |RISC|Data_path:DP                                                                                                           ; Data_path               ; work         ;
+;       |ALU:chip_ALU|                                 ; 93 (66)     ; 0            ; 0          ; 0    ; 0            ; 93 (66)      ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |RISC|Data_path:DP|ALU:chip_ALU                                                                                              ; ALU                     ; work         ;
+;          |SixteenbitKogStonAddSub:ADD|               ; 27 (0)      ; 0            ; 0          ; 0    ; 0            ; 27 (0)       ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |RISC|Data_path:DP|ALU:chip_ALU|SixteenbitKogStonAddSub:ADD                                                                  ; SixteenbitKogStonAddSub ; work         ;
+;             |Carry_oper:\Stage_23:1:map_car_23|      ; 1 (0)       ; 0            ; 0          ; 0    ; 0            ; 1 (0)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |RISC|Data_path:DP|ALU:chip_ALU|SixteenbitKogStonAddSub:ADD|Carry_oper:\Stage_23:1:map_car_23                                ; Carry_oper              ; work         ;
+;                |AND_gate:Chip_AND2|                  ; 1 (1)       ; 0            ; 0          ; 0    ; 0            ; 1 (1)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |RISC|Data_path:DP|ALU:chip_ALU|SixteenbitKogStonAddSub:ADD|Carry_oper:\Stage_23:1:map_car_23|AND_gate:Chip_AND2             ; AND_gate                ; work         ;
+;             |Carry_oper:\Stage_33:3:map_car_23|      ; 1 (0)       ; 0            ; 0          ; 0    ; 0            ; 1 (0)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |RISC|Data_path:DP|ALU:chip_ALU|SixteenbitKogStonAddSub:ADD|Carry_oper:\Stage_33:3:map_car_23                                ; Carry_oper              ; work         ;
+;                |AND_gate:Chip_AND2|                  ; 1 (1)       ; 0            ; 0          ; 0    ; 0            ; 1 (1)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |RISC|Data_path:DP|ALU:chip_ALU|SixteenbitKogStonAddSub:ADD|Carry_oper:\Stage_33:3:map_car_23|AND_gate:Chip_AND2             ; AND_gate                ; work         ;
+;             |Generator:\Stage_0:0:map_gen_0|         ; 1 (0)       ; 0            ; 0          ; 0    ; 0            ; 1 (0)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |RISC|Data_path:DP|ALU:chip_ALU|SixteenbitKogStonAddSub:ADD|Generator:\Stage_0:0:map_gen_0                                   ; Generator               ; work         ;
+;                |XOR_gate:Chip_XOR|                   ; 1 (0)       ; 0            ; 0          ; 0    ; 0            ; 1 (0)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |RISC|Data_path:DP|ALU:chip_ALU|SixteenbitKogStonAddSub:ADD|Generator:\Stage_0:0:map_gen_0|XOR_gate:Chip_XOR                 ; XOR_gate                ; work         ;
+;                   |OR_gate:Chip_OR|                  ; 1 (1)       ; 0            ; 0          ; 0    ; 0            ; 1 (1)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |RISC|Data_path:DP|ALU:chip_ALU|SixteenbitKogStonAddSub:ADD|Generator:\Stage_0:0:map_gen_0|XOR_gate:Chip_XOR|OR_gate:Chip_OR ; OR_gate                 ; work         ;
+;             |GroupGenerator:\Stage_22:2:map_car_22|  ; 1 (0)       ; 0            ; 0          ; 0    ; 0            ; 1 (0)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |RISC|Data_path:DP|ALU:chip_ALU|SixteenbitKogStonAddSub:ADD|GroupGenerator:\Stage_22:2:map_car_22                            ; GroupGenerator          ; work         ;
+;                |AND_gate:Chip_AND|                   ; 1 (1)       ; 0            ; 0          ; 0    ; 0            ; 1 (1)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |RISC|Data_path:DP|ALU:chip_ALU|SixteenbitKogStonAddSub:ADD|GroupGenerator:\Stage_22:2:map_car_22|AND_gate:Chip_AND          ; AND_gate                ; work         ;
+;             |GroupGenerator:\Stage_32:5:map_car_32|  ; 1 (0)       ; 0            ; 0          ; 0    ; 0            ; 1 (0)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |RISC|Data_path:DP|ALU:chip_ALU|SixteenbitKogStonAddSub:ADD|GroupGenerator:\Stage_32:5:map_car_32                            ; GroupGenerator          ; work         ;
+;                |AND_gate:Chip_AND|                   ; 1 (1)       ; 0            ; 0          ; 0    ; 0            ; 1 (1)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |RISC|Data_path:DP|ALU:chip_ALU|SixteenbitKogStonAddSub:ADD|GroupGenerator:\Stage_32:5:map_car_32|AND_gate:Chip_AND          ; AND_gate                ; work         ;
+;             |GroupGenerator:\Stage_32:6:map_car_32|  ; 1 (0)       ; 0            ; 0          ; 0    ; 0            ; 1 (0)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |RISC|Data_path:DP|ALU:chip_ALU|SixteenbitKogStonAddSub:ADD|GroupGenerator:\Stage_32:6:map_car_32                            ; GroupGenerator          ; work         ;
+;                |AND_gate:Chip_AND|                   ; 1 (1)       ; 0            ; 0          ; 0    ; 0            ; 1 (1)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |RISC|Data_path:DP|ALU:chip_ALU|SixteenbitKogStonAddSub:ADD|GroupGenerator:\Stage_32:6:map_car_32|AND_gate:Chip_AND          ; AND_gate                ; work         ;
+;             |GroupGenerator:\Stage_42:10:map_car_42| ; 1 (0)       ; 0            ; 0          ; 0    ; 0            ; 1 (0)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |RISC|Data_path:DP|ALU:chip_ALU|SixteenbitKogStonAddSub:ADD|GroupGenerator:\Stage_42:10:map_car_42                           ; GroupGenerator          ; work         ;
+;                |AND_gate:Chip_AND|                   ; 1 (1)       ; 0            ; 0          ; 0    ; 0            ; 1 (1)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |RISC|Data_path:DP|ALU:chip_ALU|SixteenbitKogStonAddSub:ADD|GroupGenerator:\Stage_42:10:map_car_42|AND_gate:Chip_AND         ; AND_gate                ; work         ;
+;             |GroupGenerator:\Stage_42:11:map_car_42| ; 1 (0)       ; 0            ; 0          ; 0    ; 0            ; 1 (0)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |RISC|Data_path:DP|ALU:chip_ALU|SixteenbitKogStonAddSub:ADD|GroupGenerator:\Stage_42:11:map_car_42                           ; GroupGenerator          ; work         ;
+;                |AND_gate:Chip_AND|                   ; 1 (1)       ; 0            ; 0          ; 0    ; 0            ; 1 (1)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |RISC|Data_path:DP|ALU:chip_ALU|SixteenbitKogStonAddSub:ADD|GroupGenerator:\Stage_42:11:map_car_42|AND_gate:Chip_AND         ; AND_gate                ; work         ;
+;             |GroupGenerator:\Stage_42:13:map_car_42| ; 2 (0)       ; 0            ; 0          ; 0    ; 0            ; 2 (0)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |RISC|Data_path:DP|ALU:chip_ALU|SixteenbitKogStonAddSub:ADD|GroupGenerator:\Stage_42:13:map_car_42                           ; GroupGenerator          ; work         ;
+;                |AND_gate:Chip_AND|                   ; 2 (2)       ; 0            ; 0          ; 0    ; 0            ; 2 (2)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |RISC|Data_path:DP|ALU:chip_ALU|SixteenbitKogStonAddSub:ADD|GroupGenerator:\Stage_42:13:map_car_42|AND_gate:Chip_AND         ; AND_gate                ; work         ;
+;             |GroupGenerator:\Stage_42:8:map_car_42|  ; 2 (0)       ; 0            ; 0          ; 0    ; 0            ; 2 (0)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |RISC|Data_path:DP|ALU:chip_ALU|SixteenbitKogStonAddSub:ADD|GroupGenerator:\Stage_42:8:map_car_42                            ; GroupGenerator          ; work         ;
+;                |AND_gate:Chip_AND|                   ; 2 (2)       ; 0            ; 0          ; 0    ; 0            ; 2 (2)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |RISC|Data_path:DP|ALU:chip_ALU|SixteenbitKogStonAddSub:ADD|GroupGenerator:\Stage_42:8:map_car_42|AND_gate:Chip_AND          ; AND_gate                ; work         ;
+;             |XOR_gate:\Stage_5:10:map_car_4|         ; 1 (0)       ; 0            ; 0          ; 0    ; 0            ; 1 (0)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |RISC|Data_path:DP|ALU:chip_ALU|SixteenbitKogStonAddSub:ADD|XOR_gate:\Stage_5:10:map_car_4                                   ; XOR_gate                ; work         ;
+;                |OR_gate:Chip_OR|                     ; 1 (1)       ; 0            ; 0          ; 0    ; 0            ; 1 (1)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |RISC|Data_path:DP|ALU:chip_ALU|SixteenbitKogStonAddSub:ADD|XOR_gate:\Stage_5:10:map_car_4|OR_gate:Chip_OR                   ; OR_gate                 ; work         ;
+;             |XOR_gate:\Stage_5:11:map_car_4|         ; 1 (0)       ; 0            ; 0          ; 0    ; 0            ; 1 (0)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |RISC|Data_path:DP|ALU:chip_ALU|SixteenbitKogStonAddSub:ADD|XOR_gate:\Stage_5:11:map_car_4                                   ; XOR_gate                ; work         ;
+;                |OR_gate:Chip_OR|                     ; 1 (1)       ; 0            ; 0          ; 0    ; 0            ; 1 (1)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |RISC|Data_path:DP|ALU:chip_ALU|SixteenbitKogStonAddSub:ADD|XOR_gate:\Stage_5:11:map_car_4|OR_gate:Chip_OR                   ; OR_gate                 ; work         ;
+;             |XOR_gate:\Stage_5:12:map_car_4|         ; 1 (0)       ; 0            ; 0          ; 0    ; 0            ; 1 (0)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |RISC|Data_path:DP|ALU:chip_ALU|SixteenbitKogStonAddSub:ADD|XOR_gate:\Stage_5:12:map_car_4                                   ; XOR_gate                ; work         ;
+;                |OR_gate:Chip_OR|                     ; 1 (1)       ; 0            ; 0          ; 0    ; 0            ; 1 (1)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |RISC|Data_path:DP|ALU:chip_ALU|SixteenbitKogStonAddSub:ADD|XOR_gate:\Stage_5:12:map_car_4|OR_gate:Chip_OR                   ; OR_gate                 ; work         ;
+;             |XOR_gate:\Stage_5:13:map_car_4|         ; 1 (0)       ; 0            ; 0          ; 0    ; 0            ; 1 (0)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |RISC|Data_path:DP|ALU:chip_ALU|SixteenbitKogStonAddSub:ADD|XOR_gate:\Stage_5:13:map_car_4                                   ; XOR_gate                ; work         ;
+;                |OR_gate:Chip_OR|                     ; 1 (1)       ; 0            ; 0          ; 0    ; 0            ; 1 (1)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |RISC|Data_path:DP|ALU:chip_ALU|SixteenbitKogStonAddSub:ADD|XOR_gate:\Stage_5:13:map_car_4|OR_gate:Chip_OR                   ; OR_gate                 ; work         ;
+;             |XOR_gate:\Stage_5:14:map_car_4|         ; 1 (0)       ; 0            ; 0          ; 0    ; 0            ; 1 (0)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |RISC|Data_path:DP|ALU:chip_ALU|SixteenbitKogStonAddSub:ADD|XOR_gate:\Stage_5:14:map_car_4                                   ; XOR_gate                ; work         ;
+;                |OR_gate:Chip_OR|                     ; 1 (1)       ; 0            ; 0          ; 0    ; 0            ; 1 (1)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |RISC|Data_path:DP|ALU:chip_ALU|SixteenbitKogStonAddSub:ADD|XOR_gate:\Stage_5:14:map_car_4|OR_gate:Chip_OR                   ; OR_gate                 ; work         ;
+;             |XOR_gate:\Stage_5:15:map_car_4|         ; 1 (0)       ; 0            ; 0          ; 0    ; 0            ; 1 (0)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |RISC|Data_path:DP|ALU:chip_ALU|SixteenbitKogStonAddSub:ADD|XOR_gate:\Stage_5:15:map_car_4                                   ; XOR_gate                ; work         ;
+;                |OR_gate:Chip_OR|                     ; 1 (1)       ; 0            ; 0          ; 0    ; 0            ; 1 (1)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |RISC|Data_path:DP|ALU:chip_ALU|SixteenbitKogStonAddSub:ADD|XOR_gate:\Stage_5:15:map_car_4|OR_gate:Chip_OR                   ; OR_gate                 ; work         ;
+;             |XOR_gate:\Stage_5:1:map_car_4|          ; 1 (0)       ; 0            ; 0          ; 0    ; 0            ; 1 (0)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |RISC|Data_path:DP|ALU:chip_ALU|SixteenbitKogStonAddSub:ADD|XOR_gate:\Stage_5:1:map_car_4                                    ; XOR_gate                ; work         ;
+;                |OR_gate:Chip_OR|                     ; 1 (1)       ; 0            ; 0          ; 0    ; 0            ; 1 (1)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |RISC|Data_path:DP|ALU:chip_ALU|SixteenbitKogStonAddSub:ADD|XOR_gate:\Stage_5:1:map_car_4|OR_gate:Chip_OR                    ; OR_gate                 ; work         ;
+;             |XOR_gate:\Stage_5:2:map_car_4|          ; 1 (0)       ; 0            ; 0          ; 0    ; 0            ; 1 (0)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |RISC|Data_path:DP|ALU:chip_ALU|SixteenbitKogStonAddSub:ADD|XOR_gate:\Stage_5:2:map_car_4                                    ; XOR_gate                ; work         ;
+;                |OR_gate:Chip_OR|                     ; 1 (1)       ; 0            ; 0          ; 0    ; 0            ; 1 (1)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |RISC|Data_path:DP|ALU:chip_ALU|SixteenbitKogStonAddSub:ADD|XOR_gate:\Stage_5:2:map_car_4|OR_gate:Chip_OR                    ; OR_gate                 ; work         ;
+;             |XOR_gate:\Stage_5:3:map_car_4|          ; 1 (0)       ; 0            ; 0          ; 0    ; 0            ; 1 (0)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |RISC|Data_path:DP|ALU:chip_ALU|SixteenbitKogStonAddSub:ADD|XOR_gate:\Stage_5:3:map_car_4                                    ; XOR_gate                ; work         ;
+;                |OR_gate:Chip_OR|                     ; 1 (1)       ; 0            ; 0          ; 0    ; 0            ; 1 (1)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |RISC|Data_path:DP|ALU:chip_ALU|SixteenbitKogStonAddSub:ADD|XOR_gate:\Stage_5:3:map_car_4|OR_gate:Chip_OR                    ; OR_gate                 ; work         ;
+;             |XOR_gate:\Stage_5:4:map_car_4|          ; 1 (0)       ; 0            ; 0          ; 0    ; 0            ; 1 (0)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |RISC|Data_path:DP|ALU:chip_ALU|SixteenbitKogStonAddSub:ADD|XOR_gate:\Stage_5:4:map_car_4                                    ; XOR_gate                ; work         ;
+;                |OR_gate:Chip_OR|                     ; 1 (1)       ; 0            ; 0          ; 0    ; 0            ; 1 (1)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |RISC|Data_path:DP|ALU:chip_ALU|SixteenbitKogStonAddSub:ADD|XOR_gate:\Stage_5:4:map_car_4|OR_gate:Chip_OR                    ; OR_gate                 ; work         ;
+;             |XOR_gate:\Stage_5:5:map_car_4|          ; 1 (0)       ; 0            ; 0          ; 0    ; 0            ; 1 (0)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |RISC|Data_path:DP|ALU:chip_ALU|SixteenbitKogStonAddSub:ADD|XOR_gate:\Stage_5:5:map_car_4                                    ; XOR_gate                ; work         ;
+;                |OR_gate:Chip_OR|                     ; 1 (1)       ; 0            ; 0          ; 0    ; 0            ; 1 (1)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |RISC|Data_path:DP|ALU:chip_ALU|SixteenbitKogStonAddSub:ADD|XOR_gate:\Stage_5:5:map_car_4|OR_gate:Chip_OR                    ; OR_gate                 ; work         ;
+;             |XOR_gate:\Stage_5:6:map_car_4|          ; 1 (0)       ; 0            ; 0          ; 0    ; 0            ; 1 (0)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |RISC|Data_path:DP|ALU:chip_ALU|SixteenbitKogStonAddSub:ADD|XOR_gate:\Stage_5:6:map_car_4                                    ; XOR_gate                ; work         ;
+;                |OR_gate:Chip_OR|                     ; 1 (1)       ; 0            ; 0          ; 0    ; 0            ; 1 (1)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |RISC|Data_path:DP|ALU:chip_ALU|SixteenbitKogStonAddSub:ADD|XOR_gate:\Stage_5:6:map_car_4|OR_gate:Chip_OR                    ; OR_gate                 ; work         ;
+;             |XOR_gate:\Stage_5:7:map_car_4|          ; 1 (0)       ; 0            ; 0          ; 0    ; 0            ; 1 (0)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |RISC|Data_path:DP|ALU:chip_ALU|SixteenbitKogStonAddSub:ADD|XOR_gate:\Stage_5:7:map_car_4                                    ; XOR_gate                ; work         ;
+;                |OR_gate:Chip_OR|                     ; 1 (1)       ; 0            ; 0          ; 0    ; 0            ; 1 (1)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |RISC|Data_path:DP|ALU:chip_ALU|SixteenbitKogStonAddSub:ADD|XOR_gate:\Stage_5:7:map_car_4|OR_gate:Chip_OR                    ; OR_gate                 ; work         ;
+;             |XOR_gate:\Stage_5:8:map_car_4|          ; 1 (0)       ; 0            ; 0          ; 0    ; 0            ; 1 (0)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |RISC|Data_path:DP|ALU:chip_ALU|SixteenbitKogStonAddSub:ADD|XOR_gate:\Stage_5:8:map_car_4                                    ; XOR_gate                ; work         ;
+;                |OR_gate:Chip_OR|                     ; 1 (1)       ; 0            ; 0          ; 0    ; 0            ; 1 (1)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |RISC|Data_path:DP|ALU:chip_ALU|SixteenbitKogStonAddSub:ADD|XOR_gate:\Stage_5:8:map_car_4|OR_gate:Chip_OR                    ; OR_gate                 ; work         ;
+;             |XOR_gate:\Stage_5:9:map_car_4|          ; 1 (0)       ; 0            ; 0          ; 0    ; 0            ; 1 (0)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |RISC|Data_path:DP|ALU:chip_ALU|SixteenbitKogStonAddSub:ADD|XOR_gate:\Stage_5:9:map_car_4                                    ; XOR_gate                ; work         ;
+;                |OR_gate:Chip_OR|                     ; 1 (1)       ; 0            ; 0          ; 0    ; 0            ; 1 (1)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |RISC|Data_path:DP|ALU:chip_ALU|SixteenbitKogStonAddSub:ADD|XOR_gate:\Stage_5:9:map_car_4|OR_gate:Chip_OR                    ; OR_gate                 ; work         ;
+;       |ALU_input_logic:chip_ALU_input_logic|         ; 16 (16)     ; 0            ; 0          ; 0    ; 0            ; 16 (16)      ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |RISC|Data_path:DP|ALU_input_logic:chip_ALU_input_logic                                                                      ; ALU_input_logic         ; work         ;
+;       |PC:chip_PC|                                   ; 17 (17)     ; 16           ; 0          ; 0    ; 0            ; 1 (1)        ; 0 (0)             ; 16 (16)          ; 0 (0)           ; 0 (0)      ; |RISC|Data_path:DP|PC:chip_PC                                                                                                ; PC                      ; work         ;
++------------------------------------------------------+-------------+--------------+------------+------+--------------+--------------+-------------------+------------------+-----------------+------------+------------------------------------------------------------------------------------------------------------------------------+-------------------------+--------------+
+Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
+
+
+Encoding Type:  One-Hot
++-----------------------------------------------------------------------------------------------------------------------------------------+
+; State Machine - |RISC|Control_unit:CU|nstate                                                                                            ;
++--------------+-----------+-----------+-----------+-----------+-----------+-----------+-----------+-----------+-----------+--------------+
+; Name         ; nstate.S8 ; nstate.S7 ; nstate.S6 ; nstate.S5 ; nstate.S4 ; nstate.S3 ; nstate.S2 ; nstate.S1 ; nstate.S0 ; nstate.start ;
++--------------+-----------+-----------+-----------+-----------+-----------+-----------+-----------+-----------+-----------+--------------+
+; nstate.start ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0            ;
+; nstate.S0    ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 1         ; 1            ;
+; nstate.S1    ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 1         ; 0         ; 1            ;
+; nstate.S2    ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 1         ; 0         ; 0         ; 1            ;
+; nstate.S3    ; 0         ; 0         ; 0         ; 0         ; 0         ; 1         ; 0         ; 0         ; 0         ; 1            ;
+; nstate.S4    ; 0         ; 0         ; 0         ; 0         ; 1         ; 0         ; 0         ; 0         ; 0         ; 1            ;
+; nstate.S5    ; 0         ; 0         ; 0         ; 1         ; 0         ; 0         ; 0         ; 0         ; 0         ; 1            ;
+; nstate.S6    ; 0         ; 0         ; 1         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 1            ;
+; nstate.S7    ; 0         ; 1         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 1            ;
+; nstate.S8    ; 1         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 1            ;
++--------------+-----------+-----------+-----------+-----------+-----------+-----------+-----------+-----------+-----------+--------------+
+
+
+Encoding Type:  One-Hot
++-----------------------------------------------------------------------------------------------------------------------------------------+
+; State Machine - |RISC|Control_unit:CU|pstate                                                                                            ;
++--------------+-----------+-----------+-----------+-----------+-----------+-----------+-----------+-----------+-----------+--------------+
+; Name         ; pstate.S8 ; pstate.S7 ; pstate.S6 ; pstate.S5 ; pstate.S4 ; pstate.S3 ; pstate.S2 ; pstate.S1 ; pstate.S0 ; pstate.start ;
++--------------+-----------+-----------+-----------+-----------+-----------+-----------+-----------+-----------+-----------+--------------+
+; pstate.start ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0            ;
+; pstate.S0    ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 1         ; 1            ;
+; pstate.S1    ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 1         ; 0         ; 1            ;
+; pstate.S2    ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 1         ; 0         ; 0         ; 1            ;
+; pstate.S3    ; 0         ; 0         ; 0         ; 0         ; 0         ; 1         ; 0         ; 0         ; 0         ; 1            ;
+; pstate.S4    ; 0         ; 0         ; 0         ; 0         ; 1         ; 0         ; 0         ; 0         ; 0         ; 1            ;
+; pstate.S5    ; 0         ; 0         ; 0         ; 1         ; 0         ; 0         ; 0         ; 0         ; 0         ; 1            ;
+; pstate.S6    ; 0         ; 0         ; 1         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 1            ;
+; pstate.S7    ; 0         ; 1         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 1            ;
+; pstate.S8    ; 1         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 1            ;
++--------------+-----------+-----------+-----------+-----------+-----------+-----------+-----------+-----------+-----------+--------------+
+
+
++--------------------------------------------------------------------------------------------------------------------+
+; User-Specified and Inferred Latches                                                                                ;
++-----------------------------------------------------+-------------------------------------+------------------------+
+; Latch Name                                          ; Latch Enable Signal                 ; Free of Timing Hazards ;
++-----------------------------------------------------+-------------------------------------+------------------------+
+; Data_path:DP|ALU:chip_ALU|last_out[0]               ; Data_path:DP|ALU:chip_ALU|output[0] ; yes                    ;
+; Data_path:DP|ALU:chip_ALU|last_in1[0]               ; Data_path:DP|ALU:chip_ALU|process_0 ; yes                    ;
+; Data_path:DP|ALU:chip_ALU|last_in1[1]               ; Data_path:DP|ALU:chip_ALU|process_0 ; yes                    ;
+; Data_path:DP|ALU:chip_ALU|last_in1[2]               ; Data_path:DP|ALU:chip_ALU|process_0 ; yes                    ;
+; Data_path:DP|ALU:chip_ALU|last_in1[3]               ; Data_path:DP|ALU:chip_ALU|process_0 ; yes                    ;
+; Data_path:DP|ALU:chip_ALU|last_in1[4]               ; Data_path:DP|ALU:chip_ALU|process_0 ; yes                    ;
+; Data_path:DP|ALU:chip_ALU|last_in1[5]               ; Data_path:DP|ALU:chip_ALU|process_0 ; yes                    ;
+; Data_path:DP|ALU:chip_ALU|last_in1[6]               ; Data_path:DP|ALU:chip_ALU|process_0 ; yes                    ;
+; Data_path:DP|ALU:chip_ALU|last_in1[7]               ; Data_path:DP|ALU:chip_ALU|process_0 ; yes                    ;
+; Data_path:DP|ALU:chip_ALU|last_in1[8]               ; Data_path:DP|ALU:chip_ALU|process_0 ; yes                    ;
+; Data_path:DP|ALU:chip_ALU|last_in1[9]               ; Data_path:DP|ALU:chip_ALU|process_0 ; yes                    ;
+; Data_path:DP|ALU:chip_ALU|last_in1[10]              ; Data_path:DP|ALU:chip_ALU|process_0 ; yes                    ;
+; Data_path:DP|ALU:chip_ALU|last_in1[11]              ; Data_path:DP|ALU:chip_ALU|process_0 ; yes                    ;
+; Data_path:DP|ALU:chip_ALU|last_in1[12]              ; Data_path:DP|ALU:chip_ALU|process_0 ; yes                    ;
+; Data_path:DP|ALU:chip_ALU|last_in1[13]              ; Data_path:DP|ALU:chip_ALU|process_0 ; yes                    ;
+; Data_path:DP|ALU:chip_ALU|last_in1[14]              ; Data_path:DP|ALU:chip_ALU|process_0 ; yes                    ;
+; Data_path:DP|ALU:chip_ALU|last_in1[15]              ; Data_path:DP|ALU:chip_ALU|process_0 ; yes                    ;
+; Data_path:DP|ALU:chip_ALU|last_in2[0]               ; Data_path:DP|ALU:chip_ALU|process_0 ; yes                    ;
+; Data_path:DP|ALU:chip_ALU|last_out[1]               ; Data_path:DP|ALU:chip_ALU|output[0] ; yes                    ;
+; Data_path:DP|ALU:chip_ALU|last_out[2]               ; Data_path:DP|ALU:chip_ALU|output[0] ; yes                    ;
+; Data_path:DP|ALU:chip_ALU|last_out[3]               ; Data_path:DP|ALU:chip_ALU|output[0] ; yes                    ;
+; Data_path:DP|ALU:chip_ALU|last_out[4]               ; Data_path:DP|ALU:chip_ALU|output[0] ; yes                    ;
+; Data_path:DP|ALU:chip_ALU|last_out[5]               ; Data_path:DP|ALU:chip_ALU|output[0] ; yes                    ;
+; Data_path:DP|ALU:chip_ALU|last_out[6]               ; Data_path:DP|ALU:chip_ALU|output[0] ; yes                    ;
+; Data_path:DP|ALU:chip_ALU|last_out[7]               ; Data_path:DP|ALU:chip_ALU|output[0] ; yes                    ;
+; Data_path:DP|ALU:chip_ALU|last_out[8]               ; Data_path:DP|ALU:chip_ALU|output[0] ; yes                    ;
+; Data_path:DP|ALU:chip_ALU|last_out[9]               ; Data_path:DP|ALU:chip_ALU|output[0] ; yes                    ;
+; Data_path:DP|ALU:chip_ALU|last_out[10]              ; Data_path:DP|ALU:chip_ALU|output[0] ; yes                    ;
+; Data_path:DP|ALU:chip_ALU|last_out[11]              ; Data_path:DP|ALU:chip_ALU|output[0] ; yes                    ;
+; Data_path:DP|ALU:chip_ALU|last_out[12]              ; Data_path:DP|ALU:chip_ALU|output[0] ; yes                    ;
+; Data_path:DP|ALU:chip_ALU|last_out[13]              ; Data_path:DP|ALU:chip_ALU|output[0] ; yes                    ;
+; Data_path:DP|ALU:chip_ALU|last_out[14]              ; Data_path:DP|ALU:chip_ALU|output[0] ; yes                    ;
+; Data_path:DP|ALU:chip_ALU|last_out[15]              ; Data_path:DP|ALU:chip_ALU|output[0] ; yes                    ;
+; Number of user-specified and inferred latches = 33  ;                                     ;                        ;
++-----------------------------------------------------+-------------------------------------+------------------------+
+Note: All latches listed above may not be present at the end of synthesis due to various synthesis optimizations.
+
+
++------------------------------------------------------------+
+; Logic Cells Representing Combinational Loops               ;
++--------------------------------------------------------+---+
+; Logic Cell Name                                        ;   ;
++--------------------------------------------------------+---+
+; Data_path:DP|ALU:chip_ALU|clock_counter~3              ;   ;
+; Data_path:DP|ALU:chip_ALU|Add0~0                       ;   ;
+; Data_path:DP|ALU:chip_ALU|clock_counter~4              ;   ;
+; Data_path:DP|ALU:chip_ALU|clock_counter~5              ;   ;
+; Number of logic cells representing combinational loops ; 4 ;
++--------------------------------------------------------+---+
+Note: All cells listed above may not be present at the end of synthesis due to various synthesis optimizations.
+
+
++------------------------------------------------------------------------------------------------+
+; Registers Removed During Synthesis                                                             ;
++-------------------------------------------------------+----------------------------------------+
+; Register name                                         ; Reason for Removal                     ;
++-------------------------------------------------------+----------------------------------------+
+; Data_path:DP|memory:chip_memory|output[0..15]         ; Lost fanout                            ;
+; Data_path:DP|Register_file:chip_RF|registers[0][0]    ; Stuck at GND due to stuck port data_in ;
+; Data_path:DP|Register_file:chip_RF|registers[0][1]    ; Stuck at GND due to stuck port data_in ;
+; Data_path:DP|Register_file:chip_RF|registers[0][2]    ; Stuck at GND due to stuck port data_in ;
+; Data_path:DP|Register_file:chip_RF|registers[0][3]    ; Stuck at GND due to stuck port data_in ;
+; Data_path:DP|Register_file:chip_RF|registers[0][4]    ; Stuck at GND due to stuck port data_in ;
+; Data_path:DP|Register_file:chip_RF|registers[0][5]    ; Stuck at GND due to stuck port data_in ;
+; Data_path:DP|Register_file:chip_RF|registers[0][6]    ; Stuck at GND due to stuck port data_in ;
+; Data_path:DP|Register_file:chip_RF|registers[0][7]    ; Stuck at GND due to stuck port data_in ;
+; Data_path:DP|Register_file:chip_RF|registers[0][8]    ; Stuck at GND due to stuck port data_in ;
+; Data_path:DP|Register_file:chip_RF|registers[0][9]    ; Stuck at GND due to stuck port data_in ;
+; Data_path:DP|Register_file:chip_RF|registers[0][10]   ; Stuck at GND due to stuck port data_in ;
+; Data_path:DP|Register_file:chip_RF|registers[0][11]   ; Stuck at GND due to stuck port data_in ;
+; Data_path:DP|Register_file:chip_RF|registers[0][12]   ; Stuck at GND due to stuck port data_in ;
+; Data_path:DP|Register_file:chip_RF|registers[0][13]   ; Stuck at GND due to stuck port data_in ;
+; Data_path:DP|Register_file:chip_RF|registers[0][14]   ; Stuck at GND due to stuck port data_in ;
+; Data_path:DP|Register_file:chip_RF|registers[0][15]   ; Stuck at GND due to stuck port data_in ;
+; Data_path:DP|Register_file:chip_RF|registers[1][0]    ; Stuck at GND due to stuck port data_in ;
+; Data_path:DP|Register_file:chip_RF|registers[1][1]    ; Stuck at GND due to stuck port data_in ;
+; Data_path:DP|Register_file:chip_RF|registers[1][2]    ; Stuck at GND due to stuck port data_in ;
+; Data_path:DP|Register_file:chip_RF|registers[1][3]    ; Stuck at GND due to stuck port data_in ;
+; Data_path:DP|Register_file:chip_RF|registers[1][4]    ; Stuck at GND due to stuck port data_in ;
+; Data_path:DP|Register_file:chip_RF|registers[1][5]    ; Stuck at GND due to stuck port data_in ;
+; Data_path:DP|Register_file:chip_RF|registers[1][6]    ; Stuck at GND due to stuck port data_in ;
+; Data_path:DP|Register_file:chip_RF|registers[1][7]    ; Stuck at GND due to stuck port data_in ;
+; Data_path:DP|Register_file:chip_RF|registers[1][8]    ; Stuck at GND due to stuck port data_in ;
+; Data_path:DP|Register_file:chip_RF|registers[1][9]    ; Stuck at GND due to stuck port data_in ;
+; Data_path:DP|Register_file:chip_RF|registers[1][10]   ; Stuck at GND due to stuck port data_in ;
+; Data_path:DP|Register_file:chip_RF|registers[1][11]   ; Stuck at GND due to stuck port data_in ;
+; Data_path:DP|Register_file:chip_RF|registers[1][12]   ; Stuck at GND due to stuck port data_in ;
+; Data_path:DP|Register_file:chip_RF|registers[1][13]   ; Stuck at GND due to stuck port data_in ;
+; Data_path:DP|Register_file:chip_RF|registers[1][14]   ; Stuck at GND due to stuck port data_in ;
+; Data_path:DP|Register_file:chip_RF|registers[1][15]   ; Stuck at GND due to stuck port data_in ;
+; Data_path:DP|Register_file:chip_RF|registers[2][0]    ; Stuck at GND due to stuck port data_in ;
+; Data_path:DP|Register_file:chip_RF|registers[2][1]    ; Stuck at GND due to stuck port data_in ;
+; Data_path:DP|Register_file:chip_RF|registers[2][2]    ; Stuck at GND due to stuck port data_in ;
+; Data_path:DP|Register_file:chip_RF|registers[2][3]    ; Stuck at GND due to stuck port data_in ;
+; Data_path:DP|Register_file:chip_RF|registers[2][4]    ; Stuck at GND due to stuck port data_in ;
+; Data_path:DP|Register_file:chip_RF|registers[2][5]    ; Stuck at GND due to stuck port data_in ;
+; Data_path:DP|Register_file:chip_RF|registers[2][6]    ; Stuck at GND due to stuck port data_in ;
+; Data_path:DP|Register_file:chip_RF|registers[2][7]    ; Stuck at GND due to stuck port data_in ;
+; Data_path:DP|Register_file:chip_RF|registers[2][8]    ; Stuck at GND due to stuck port data_in ;
+; Data_path:DP|Register_file:chip_RF|registers[2][9]    ; Stuck at GND due to stuck port data_in ;
+; Data_path:DP|Register_file:chip_RF|registers[2][10]   ; Stuck at GND due to stuck port data_in ;
+; Data_path:DP|Register_file:chip_RF|registers[2][11]   ; Stuck at GND due to stuck port data_in ;
+; Data_path:DP|Register_file:chip_RF|registers[2][12]   ; Stuck at GND due to stuck port data_in ;
+; Data_path:DP|Register_file:chip_RF|registers[2][13]   ; Stuck at GND due to stuck port data_in ;
+; Data_path:DP|Register_file:chip_RF|registers[2][14]   ; Stuck at GND due to stuck port data_in ;
+; Data_path:DP|Register_file:chip_RF|registers[2][15]   ; Stuck at GND due to stuck port data_in ;
+; Data_path:DP|Register_file:chip_RF|registers[3][0]    ; Stuck at GND due to stuck port data_in ;
+; Data_path:DP|Register_file:chip_RF|registers[3][1]    ; Stuck at GND due to stuck port data_in ;
+; Data_path:DP|Register_file:chip_RF|registers[3][2]    ; Stuck at GND due to stuck port data_in ;
+; Data_path:DP|Register_file:chip_RF|registers[3][3]    ; Stuck at GND due to stuck port data_in ;
+; Data_path:DP|Register_file:chip_RF|registers[3][4]    ; Stuck at GND due to stuck port data_in ;
+; Data_path:DP|Register_file:chip_RF|registers[3][5]    ; Stuck at GND due to stuck port data_in ;
+; Data_path:DP|Register_file:chip_RF|registers[3][6]    ; Stuck at GND due to stuck port data_in ;
+; Data_path:DP|Register_file:chip_RF|registers[3][7]    ; Stuck at GND due to stuck port data_in ;
+; Data_path:DP|Register_file:chip_RF|registers[3][8]    ; Stuck at GND due to stuck port data_in ;
+; Data_path:DP|Register_file:chip_RF|registers[3][9]    ; Stuck at GND due to stuck port data_in ;
+; Data_path:DP|Register_file:chip_RF|registers[3][10]   ; Stuck at GND due to stuck port data_in ;
+; Data_path:DP|Register_file:chip_RF|registers[3][11]   ; Stuck at GND due to stuck port data_in ;
+; Data_path:DP|Register_file:chip_RF|registers[3][12]   ; Stuck at GND due to stuck port data_in ;
+; Data_path:DP|Register_file:chip_RF|registers[3][13]   ; Stuck at GND due to stuck port data_in ;
+; Data_path:DP|Register_file:chip_RF|registers[3][14]   ; Stuck at GND due to stuck port data_in ;
+; Data_path:DP|Register_file:chip_RF|registers[3][15]   ; Stuck at GND due to stuck port data_in ;
+; Data_path:DP|Register_file:chip_RF|registers[4][0]    ; Stuck at GND due to stuck port data_in ;
+; Data_path:DP|Register_file:chip_RF|registers[4][1]    ; Stuck at GND due to stuck port data_in ;
+; Data_path:DP|Register_file:chip_RF|registers[4][2]    ; Stuck at GND due to stuck port data_in ;
+; Data_path:DP|Register_file:chip_RF|registers[4][3]    ; Stuck at GND due to stuck port data_in ;
+; Data_path:DP|Register_file:chip_RF|registers[4][4]    ; Stuck at GND due to stuck port data_in ;
+; Data_path:DP|Register_file:chip_RF|registers[4][5]    ; Stuck at GND due to stuck port data_in ;
+; Data_path:DP|Register_file:chip_RF|registers[4][6]    ; Stuck at GND due to stuck port data_in ;
+; Data_path:DP|Register_file:chip_RF|registers[4][7]    ; Stuck at GND due to stuck port data_in ;
+; Data_path:DP|Register_file:chip_RF|registers[4][8]    ; Stuck at GND due to stuck port data_in ;
+; Data_path:DP|Register_file:chip_RF|registers[4][9]    ; Stuck at GND due to stuck port data_in ;
+; Data_path:DP|Register_file:chip_RF|registers[4][10]   ; Stuck at GND due to stuck port data_in ;
+; Data_path:DP|Register_file:chip_RF|registers[4][11]   ; Stuck at GND due to stuck port data_in ;
+; Data_path:DP|Register_file:chip_RF|registers[4][12]   ; Stuck at GND due to stuck port data_in ;
+; Data_path:DP|Register_file:chip_RF|registers[4][13]   ; Stuck at GND due to stuck port data_in ;
+; Data_path:DP|Register_file:chip_RF|registers[4][14]   ; Stuck at GND due to stuck port data_in ;
+; Data_path:DP|Register_file:chip_RF|registers[4][15]   ; Stuck at GND due to stuck port data_in ;
+; Data_path:DP|Register_file:chip_RF|registers[5][0]    ; Stuck at GND due to stuck port data_in ;
+; Data_path:DP|Register_file:chip_RF|registers[5][1]    ; Stuck at GND due to stuck port data_in ;
+; Data_path:DP|Register_file:chip_RF|registers[5][2]    ; Stuck at GND due to stuck port data_in ;
+; Data_path:DP|Register_file:chip_RF|registers[5][3]    ; Stuck at GND due to stuck port data_in ;
+; Data_path:DP|Register_file:chip_RF|registers[5][4]    ; Stuck at GND due to stuck port data_in ;
+; Data_path:DP|Register_file:chip_RF|registers[5][5]    ; Stuck at GND due to stuck port data_in ;
+; Data_path:DP|Register_file:chip_RF|registers[5][6]    ; Stuck at GND due to stuck port data_in ;
+; Data_path:DP|Register_file:chip_RF|registers[5][7]    ; Stuck at GND due to stuck port data_in ;
+; Data_path:DP|Register_file:chip_RF|registers[5][8]    ; Stuck at GND due to stuck port data_in ;
+; Data_path:DP|Register_file:chip_RF|registers[5][9]    ; Stuck at GND due to stuck port data_in ;
+; Data_path:DP|Register_file:chip_RF|registers[5][10]   ; Stuck at GND due to stuck port data_in ;
+; Data_path:DP|Register_file:chip_RF|registers[5][11]   ; Stuck at GND due to stuck port data_in ;
+; Data_path:DP|Register_file:chip_RF|registers[5][12]   ; Stuck at GND due to stuck port data_in ;
+; Data_path:DP|Register_file:chip_RF|registers[5][13]   ; Stuck at GND due to stuck port data_in ;
+; Data_path:DP|Register_file:chip_RF|registers[5][14]   ; Stuck at GND due to stuck port data_in ;
+; Data_path:DP|Register_file:chip_RF|registers[5][15]   ; Stuck at GND due to stuck port data_in ;
+; Data_path:DP|Register_file:chip_RF|registers[6][0]    ; Stuck at GND due to stuck port data_in ;
+; Data_path:DP|Register_file:chip_RF|registers[6][1]    ; Stuck at GND due to stuck port data_in ;
+; Data_path:DP|Register_file:chip_RF|registers[6][2]    ; Stuck at GND due to stuck port data_in ;
+; Data_path:DP|Register_file:chip_RF|registers[6][3]    ; Stuck at GND due to stuck port data_in ;
+; Data_path:DP|Register_file:chip_RF|registers[6][4]    ; Stuck at GND due to stuck port data_in ;
+; Data_path:DP|Register_file:chip_RF|registers[6][5]    ; Stuck at GND due to stuck port data_in ;
+; Data_path:DP|Register_file:chip_RF|registers[6][6]    ; Stuck at GND due to stuck port data_in ;
+; Data_path:DP|Register_file:chip_RF|registers[6][7]    ; Stuck at GND due to stuck port data_in ;
+; Data_path:DP|Register_file:chip_RF|registers[6][8]    ; Stuck at GND due to stuck port data_in ;
+; Data_path:DP|Register_file:chip_RF|registers[6][9]    ; Stuck at GND due to stuck port data_in ;
+; Data_path:DP|Register_file:chip_RF|registers[6][10]   ; Stuck at GND due to stuck port data_in ;
+; Data_path:DP|Register_file:chip_RF|registers[6][11]   ; Stuck at GND due to stuck port data_in ;
+; Data_path:DP|Register_file:chip_RF|registers[6][12]   ; Stuck at GND due to stuck port data_in ;
+; Data_path:DP|Register_file:chip_RF|registers[6][13]   ; Stuck at GND due to stuck port data_in ;
+; Data_path:DP|Register_file:chip_RF|registers[6][14]   ; Stuck at GND due to stuck port data_in ;
+; Data_path:DP|Register_file:chip_RF|registers[6][15]   ; Stuck at GND due to stuck port data_in ;
+; Data_path:DP|Register_file:chip_RF|registers[7][0]    ; Stuck at GND due to stuck port data_in ;
+; Data_path:DP|Register_file:chip_RF|registers[7][1]    ; Stuck at GND due to stuck port data_in ;
+; Data_path:DP|Register_file:chip_RF|registers[7][2]    ; Stuck at GND due to stuck port data_in ;
+; Data_path:DP|Register_file:chip_RF|registers[7][3]    ; Stuck at GND due to stuck port data_in ;
+; Data_path:DP|Register_file:chip_RF|registers[7][4]    ; Stuck at GND due to stuck port data_in ;
+; Data_path:DP|Register_file:chip_RF|registers[7][5]    ; Stuck at GND due to stuck port data_in ;
+; Data_path:DP|Register_file:chip_RF|registers[7][6]    ; Stuck at GND due to stuck port data_in ;
+; Data_path:DP|Register_file:chip_RF|registers[7][7]    ; Stuck at GND due to stuck port data_in ;
+; Data_path:DP|Register_file:chip_RF|registers[7][8]    ; Stuck at GND due to stuck port data_in ;
+; Data_path:DP|Register_file:chip_RF|registers[7][9]    ; Stuck at GND due to stuck port data_in ;
+; Data_path:DP|Register_file:chip_RF|registers[7][10]   ; Stuck at GND due to stuck port data_in ;
+; Data_path:DP|Register_file:chip_RF|registers[7][11]   ; Stuck at GND due to stuck port data_in ;
+; Data_path:DP|Register_file:chip_RF|registers[7][12]   ; Stuck at GND due to stuck port data_in ;
+; Data_path:DP|Register_file:chip_RF|registers[7][13]   ; Stuck at GND due to stuck port data_in ;
+; Data_path:DP|Register_file:chip_RF|registers[7][14]   ; Stuck at GND due to stuck port data_in ;
+; Data_path:DP|Register_file:chip_RF|registers[7][15]   ; Stuck at GND due to stuck port data_in ;
+; Data_path:DP|Register_file:chip_RF|out_R2_temp[0..15] ; Stuck at GND due to stuck port data_in ;
+; Data_path:DP|Register_file:chip_RF|out_R1_temp[0..15] ; Stuck at GND due to stuck port data_in ;
+; Data_path:DP|Temp_LA_SA:chip_LA_SA|store[0..15]       ; Lost fanout                            ;
+; Control_unit:CU|pstate.S7                             ; Merged with Control_unit:CU|pstate.S6  ;
+; Control_unit:CU|pstate.S8                             ; Merged with Control_unit:CU|pstate.S6  ;
+; Control_unit:CU|nstate.S7                             ; Merged with Control_unit:CU|nstate.S6  ;
+; Control_unit:CU|nstate.S8                             ; Merged with Control_unit:CU|nstate.S6  ;
+; Control_unit:CU|nstate.S6                             ; Stuck at GND due to stuck port data_in ;
+; Control_unit:CU|pstate.S6                             ; Stuck at GND due to stuck port data_in ;
+; Control_unit:CU|LA_SA_reg_write_t                     ; Stuck at GND due to stuck port data_in ;
+; Control_unit:CU|mem_read_t                            ; Stuck at GND due to stuck port data_in ;
+; Control_unit:CU|mem_write_t                           ; Stuck at GND due to stuck port data_in ;
+; Control_unit:CU|which_reg_t[0..2]                     ; Stuck at GND due to stuck port data_in ;
+; Control_unit:CU|counter[0..2]                         ; Stuck at GND due to stuck port data_in ;
+; Control_unit:CU|SA_which_reg_control_t                ; Stuck at GND due to stuck port data_in ;
+; Total Number of Removed Registers = 208               ;                                        ;
++-------------------------------------------------------+----------------------------------------+
+
+
++----------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Removed Registers Triggering Further Register Optimizations                                                                                              ;
++-----------------------------------------------------+---------------------------+------------------------------------------------------------------------+
+; Register name                                       ; Reason for Removal        ; Registers Removed due to This Register                                 ;
++-----------------------------------------------------+---------------------------+------------------------------------------------------------------------+
+; Control_unit:CU|nstate.S6                           ; Stuck at GND              ; Control_unit:CU|pstate.S6, Control_unit:CU|LA_SA_reg_write_t,          ;
+;                                                     ; due to stuck port data_in ; Control_unit:CU|mem_read_t, Control_unit:CU|mem_write_t,               ;
+;                                                     ;                           ; Control_unit:CU|which_reg_t[0], Control_unit:CU|which_reg_t[1],        ;
+;                                                     ;                           ; Control_unit:CU|which_reg_t[2], Control_unit:CU|SA_which_reg_control_t ;
+; Data_path:DP|Register_file:chip_RF|registers[0][2]  ; Stuck at GND              ; Data_path:DP|Register_file:chip_RF|out_R2_temp[2],                     ;
+;                                                     ; due to stuck port data_in ; Data_path:DP|Register_file:chip_RF|out_R1_temp[2],                     ;
+;                                                     ;                           ; Data_path:DP|Temp_LA_SA:chip_LA_SA|store[0]                            ;
+; Data_path:DP|Register_file:chip_RF|registers[0][0]  ; Stuck at GND              ; Data_path:DP|Register_file:chip_RF|out_R2_temp[0],                     ;
+;                                                     ; due to stuck port data_in ; Data_path:DP|Register_file:chip_RF|out_R1_temp[0]                      ;
+; Data_path:DP|Register_file:chip_RF|registers[0][1]  ; Stuck at GND              ; Data_path:DP|Register_file:chip_RF|out_R2_temp[1],                     ;
+;                                                     ; due to stuck port data_in ; Data_path:DP|Register_file:chip_RF|out_R1_temp[1]                      ;
+; Data_path:DP|Register_file:chip_RF|registers[0][3]  ; Stuck at GND              ; Data_path:DP|Register_file:chip_RF|out_R2_temp[3],                     ;
+;                                                     ; due to stuck port data_in ; Data_path:DP|Register_file:chip_RF|out_R1_temp[3]                      ;
+; Data_path:DP|Register_file:chip_RF|registers[0][4]  ; Stuck at GND              ; Data_path:DP|Register_file:chip_RF|out_R2_temp[4],                     ;
+;                                                     ; due to stuck port data_in ; Data_path:DP|Register_file:chip_RF|out_R1_temp[4]                      ;
+; Data_path:DP|Register_file:chip_RF|registers[0][5]  ; Stuck at GND              ; Data_path:DP|Register_file:chip_RF|out_R2_temp[5],                     ;
+;                                                     ; due to stuck port data_in ; Data_path:DP|Register_file:chip_RF|out_R1_temp[5]                      ;
+; Data_path:DP|Register_file:chip_RF|registers[0][6]  ; Stuck at GND              ; Data_path:DP|Register_file:chip_RF|out_R2_temp[6],                     ;
+;                                                     ; due to stuck port data_in ; Data_path:DP|Register_file:chip_RF|out_R1_temp[6]                      ;
+; Data_path:DP|Register_file:chip_RF|registers[0][7]  ; Stuck at GND              ; Data_path:DP|Register_file:chip_RF|out_R2_temp[7],                     ;
+;                                                     ; due to stuck port data_in ; Data_path:DP|Register_file:chip_RF|out_R1_temp[7]                      ;
+; Data_path:DP|Register_file:chip_RF|registers[0][8]  ; Stuck at GND              ; Data_path:DP|Register_file:chip_RF|out_R2_temp[8],                     ;
+;                                                     ; due to stuck port data_in ; Data_path:DP|Register_file:chip_RF|out_R1_temp[8]                      ;
+; Data_path:DP|Register_file:chip_RF|registers[0][9]  ; Stuck at GND              ; Data_path:DP|Register_file:chip_RF|out_R2_temp[9],                     ;
+;                                                     ; due to stuck port data_in ; Data_path:DP|Register_file:chip_RF|out_R1_temp[9]                      ;
+; Data_path:DP|Register_file:chip_RF|registers[0][10] ; Stuck at GND              ; Data_path:DP|Register_file:chip_RF|out_R2_temp[10],                    ;
+;                                                     ; due to stuck port data_in ; Data_path:DP|Register_file:chip_RF|out_R1_temp[10]                     ;
+; Data_path:DP|Register_file:chip_RF|registers[0][11] ; Stuck at GND              ; Data_path:DP|Register_file:chip_RF|out_R2_temp[11],                    ;
+;                                                     ; due to stuck port data_in ; Data_path:DP|Register_file:chip_RF|out_R1_temp[11]                     ;
+; Data_path:DP|Register_file:chip_RF|registers[0][12] ; Stuck at GND              ; Data_path:DP|Register_file:chip_RF|out_R2_temp[12],                    ;
+;                                                     ; due to stuck port data_in ; Data_path:DP|Register_file:chip_RF|out_R1_temp[12]                     ;
+; Data_path:DP|Register_file:chip_RF|registers[0][13] ; Stuck at GND              ; Data_path:DP|Register_file:chip_RF|out_R2_temp[13],                    ;
+;                                                     ; due to stuck port data_in ; Data_path:DP|Register_file:chip_RF|out_R1_temp[13]                     ;
+; Data_path:DP|Register_file:chip_RF|registers[0][14] ; Stuck at GND              ; Data_path:DP|Register_file:chip_RF|out_R2_temp[14],                    ;
+;                                                     ; due to stuck port data_in ; Data_path:DP|Register_file:chip_RF|out_R1_temp[14]                     ;
+; Data_path:DP|Register_file:chip_RF|registers[0][15] ; Stuck at GND              ; Data_path:DP|Register_file:chip_RF|out_R2_temp[15],                    ;
+;                                                     ; due to stuck port data_in ; Data_path:DP|Register_file:chip_RF|out_R1_temp[15]                     ;
++-----------------------------------------------------+---------------------------+------------------------------------------------------------------------+
+
+
++------------------------------------------------------+
+; General Register Statistics                          ;
++----------------------------------------------+-------+
+; Statistic                                    ; Value ;
++----------------------------------------------+-------+
+; Total registers                              ; 39    ;
+; Number of registers using Synchronous Clear  ; 0     ;
+; Number of registers using Synchronous Load   ; 0     ;
+; Number of registers using Asynchronous Clear ; 0     ;
+; Number of registers using Asynchronous Load  ; 0     ;
+; Number of registers using Clock Enable       ; 18    ;
+; Number of registers using Preset             ; 0     ;
++----------------------------------------------+-------+
+
+
++----------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                                 ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+--------------------------------------------------+
+; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                       ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+--------------------------------------------------+
+; 3:1                ; 3 bits    ; 6 LEs         ; 3 LEs                ; 3 LEs                  ; Yes        ; |RISC|Control_unit:CU|cycle_number[0]            ;
+; 3:1                ; 16 bits   ; 32 LEs        ; 16 LEs               ; 16 LEs                 ; Yes        ; |RISC|Data_path:DP|PC:chip_PC|output[10]         ;
+; 4:1                ; 3 bits    ; 6 LEs         ; 3 LEs                ; 3 LEs                  ; Yes        ; |RISC|Control_unit:CU|counter[2]                 ;
+; 4:1                ; 3 bits    ; 6 LEs         ; 3 LEs                ; 3 LEs                  ; Yes        ; |RISC|Control_unit:CU|which_reg_t[0]             ;
+; 3:1                ; 3 bits    ; 6 LEs         ; 3 LEs                ; 3 LEs                  ; No         ; |RISC|Data_path:DP|ALU:chip_ALU|clock_counter[2] ;
+; 8:1                ; 4 bits    ; 20 LEs        ; 8 LEs                ; 12 LEs                 ; No         ; |RISC|Control_unit:CU|Selector9                  ;
+; 9:1                ; 2 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; No         ; |RISC|Control_unit:CU|Selector4                  ;
+; 10:1               ; 2 bits    ; 12 LEs        ; 8 LEs                ; 4 LEs                  ; No         ; |RISC|Control_unit:CU|Selector6                  ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+--------------------------------------------------+
+
+
++-----------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "Data_path:DP|Status_Registers:chip_SReg"                                             ;
++-------+--------+----------+-------------------------------------------------------------------------------------+
+; Port  ; Type   ; Severity ; Details                                                                             ;
++-------+--------+----------+-------------------------------------------------------------------------------------+
+; c_out ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
+; z_out ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++-------+--------+----------+-------------------------------------------------------------------------------------+
+
+
++-----------------------------------------------------------------------------------+
+; Port Connectivity Checks: "Data_path:DP|ALU:chip_ALU|SixteenbitKogStonAddSub:ADD" ;
++------+-------+----------+---------------------------------------------------------+
+; Port ; Type  ; Severity ; Details                                                 ;
++------+-------+----------+---------------------------------------------------------+
+; cin  ; Input ; Info     ; Stuck at GND                                            ;
++------+-------+----------+---------------------------------------------------------+
+
+
++-------------------------------+
+; Analysis & Synthesis Messages ;
++-------------------------------+
+Info: *******************************************************************
+Info: Running Quartus Prime Analysis & Synthesis
+    Info: Version 20.1.0 Build 711 06/05/2020 SJ Lite Edition
+    Info: Processing started: Sun May 30 14:20:34 2021
+Info: Command: quartus_map --read_settings_files=on --write_settings_files=off RISC -c RISC
+Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
+Info (20030): Parallel compilation is enabled and will use 6 of the 6 processors detected
+Info (12021): Found 2 design units, including 1 entities, in source file xor_gate.vhd
+    Info (12022): Found design unit 1: XOR_gate-Struct File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/XOR_gate.vhd Line: 12
+    Info (12023): Found entity 1: XOR_gate File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/XOR_gate.vhd Line: 8
+Info (12021): Found 2 design units, including 1 entities, in source file testbench1.vhd
+    Info (12022): Found design unit 1: Testbench1-tb File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/Testbench1.vhd Line: 11
+    Info (12023): Found entity 1: Testbench1 File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/Testbench1.vhd Line: 8
+Info (12021): Found 2 design units, including 1 entities, in source file temp_la_sa.vhd
+    Info (12022): Found design unit 1: Temp_LA_SA-behaviour File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/Temp_LA_SA.vhd Line: 19
+    Info (12023): Found entity 1: Temp_LA_SA File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/Temp_LA_SA.vhd Line: 10
+Info (12021): Found 2 design units, including 1 entities, in source file status_registers.vhd
+    Info (12022): Found design unit 1: Status_Registers-behaviour File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/Status_Registers.vhd Line: 24
+    Info (12023): Found entity 1: Status_Registers File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/Status_Registers.vhd Line: 11
+Info (12021): Found 2 design units, including 1 entities, in source file sixteenbitnand.vhd
+    Info (12022): Found design unit 1: SixteenbitNAND-Behavioral File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/SixteenbitNAND.vhd Line: 14
+    Info (12023): Found entity 1: SixteenbitNAND File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/SixteenbitNAND.vhd Line: 8
+Info (12021): Found 2 design units, including 1 entities, in source file sixteenbitkogstonaddsub.vhd
+    Info (12022): Found design unit 1: SixteenbitKogStonAddSub-Behavioral File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/SixteenbitKogStonAddSub.vhd Line: 16
+    Info (12023): Found entity 1: SixteenbitKogStonAddSub File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/SixteenbitKogStonAddSub.vhd Line: 8
+Info (12021): Found 2 design units, including 1 entities, in source file sign_extender_six.vhd
+    Info (12022): Found design unit 1: Sign_extender_six-behaviour File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/Sign_extender_six.vhd Line: 15
+    Info (12023): Found entity 1: Sign_extender_six File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/Sign_extender_six.vhd Line: 10
+Info (12021): Found 2 design units, including 1 entities, in source file sign_extender_nine.vhd
+    Info (12022): Found design unit 1: Sign_extender_nine-behaviour File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/Sign_extender_nine.vhd Line: 15
+    Info (12023): Found entity 1: Sign_extender_nine File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/Sign_extender_nine.vhd Line: 10
+Info (12021): Found 2 design units, including 1 entities, in source file risc.vhd
+    Info (12022): Found design unit 1: RISC-behaviour File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/RISC.vhd Line: 46
+    Info (12023): Found entity 1: RISC File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/RISC.vhd Line: 10
+Info (12021): Found 2 design units, including 1 entities, in source file rf_ra_input.vhd
+    Info (12022): Found design unit 1: RF_RA_input-behaviour File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/RF_RA_input.vhd Line: 17
+    Info (12023): Found entity 1: RF_RA_input File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/RF_RA_input.vhd Line: 10
+Info (12021): Found 2 design units, including 1 entities, in source file rf_input_process.vhd
+    Info (12022): Found design unit 1: RF_input_process-behaviour File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/RF_input_process.vhd Line: 19
+    Info (12023): Found entity 1: RF_input_process File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/RF_input_process.vhd Line: 10
+Info (12021): Found 2 design units, including 1 entities, in source file rf_datain_process.vhd
+    Info (12022): Found design unit 1: RF_datain_process-behaviour File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/RF_datain_process.vhd Line: 17
+    Info (12023): Found entity 1: RF_datain_process File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/RF_datain_process.vhd Line: 8
+Info (12021): Found 2 design units, including 1 entities, in source file register_file.vhd
+    Info (12022): Found design unit 1: Register_file-behaviour File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/Register_file.vhd Line: 30
+    Info (12023): Found entity 1: Register_file File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/Register_file.vhd Line: 10
+Info (12021): Found 2 design units, including 1 entities, in source file pc_write.vhd
+    Info (12022): Found design unit 1: PC_write-behavourial File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/PC_write.vhd Line: 15
+    Info (12023): Found entity 1: PC_write File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/PC_write.vhd Line: 9
+Info (12021): Found 2 design units, including 1 entities, in source file pc.vhd
+    Info (12022): Found design unit 1: PC-behaviour File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/PC.vhd Line: 16
+    Info (12023): Found entity 1: PC File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/PC.vhd Line: 8
+Info (12021): Found 2 design units, including 1 entities, in source file or_gate.vhd
+    Info (12022): Found design unit 1: OR_gate-Struct File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/OR_gate.vhd Line: 12
+    Info (12023): Found entity 1: OR_gate File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/OR_gate.vhd Line: 8
+Info (12021): Found 2 design units, including 1 entities, in source file not_gate.vhd
+    Info (12022): Found design unit 1: NOT_gate-Struct File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/NOT_gate.vhd Line: 12
+    Info (12023): Found entity 1: NOT_gate File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/NOT_gate.vhd Line: 8
+Info (12021): Found 2 design units, including 1 entities, in source file memory_address_input.vhd
+    Info (12022): Found design unit 1: memory_address_input-behaviour File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/memory_address_input.vhd Line: 17
+    Info (12023): Found entity 1: memory_address_input File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/memory_address_input.vhd Line: 10
+Info (12021): Found 2 design units, including 1 entities, in source file memory.vhd
+    Info (12022): Found design unit 1: memory-behaviour File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/memory.vhd Line: 19
+    Info (12023): Found entity 1: memory File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/memory.vhd Line: 10
+Info (12021): Found 2 design units, including 1 entities, in source file instruction_register.vhd
+    Info (12022): Found design unit 1: Instruction_register-behaviour File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/Instruction_register.vhd Line: 22
+    Info (12023): Found entity 1: Instruction_register File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/Instruction_register.vhd Line: 8
+Info (12021): Found 2 design units, including 1 entities, in source file instruction_memory.vhd
+    Info (12022): Found design unit 1: Instruction_memory-behaviour File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/Instruction_memory.vhd Line: 15
+    Info (12023): Found entity 1: Instruction_memory File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/Instruction_memory.vhd Line: 10
+Info (12021): Found 2 design units, including 1 entities, in source file groupgenerator.vhd
+    Info (12022): Found design unit 1: GroupGenerator-Behavioral File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/GroupGenerator.vhd Line: 15
+    Info (12023): Found entity 1: GroupGenerator File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/GroupGenerator.vhd Line: 8
+Info (12021): Found 2 design units, including 1 entities, in source file generator.vhd
+    Info (12022): Found design unit 1: Generator-Behavioral File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/generator.vhd Line: 15
+    Info (12023): Found entity 1: Generator File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/generator.vhd Line: 8
+Info (12021): Found 2 design units, including 1 entities, in source file data_path.vhd
+    Info (12022): Found design unit 1: Data_path-behaviour File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/Data_path.vhd Line: 42
+    Info (12023): Found entity 1: Data_path File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/Data_path.vhd Line: 10
+Info (12021): Found 2 design units, including 1 entities, in source file control_unit.vhd
+    Info (12022): Found design unit 1: Control_unit-behaviour File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/Control_unit.vhd Line: 27
+    Info (12023): Found entity 1: Control_unit File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/Control_unit.vhd Line: 10
+Info (12021): Found 2 design units, including 1 entities, in source file carry_oper.vhd
+    Info (12022): Found design unit 1: Carry_oper-Behavioral File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/Carry_oper.vhd Line: 17
+    Info (12023): Found entity 1: Carry_oper File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/Carry_oper.vhd Line: 8
+Info (12021): Found 2 design units, including 1 entities, in source file and_gate.vhd
+    Info (12022): Found design unit 1: AND_gate-Struct File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/AND_gate.vhd Line: 12
+    Info (12023): Found entity 1: AND_gate File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/AND_gate.vhd Line: 8
+Info (12021): Found 2 design units, including 1 entities, in source file alu_input_logic.vhd
+    Info (12022): Found design unit 1: ALU_input_logic-behavourial File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/ALU_input_logic.vhd Line: 18
+    Info (12023): Found entity 1: ALU_input_logic File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/ALU_input_logic.vhd Line: 9
+Info (12021): Found 2 design units, including 1 entities, in source file alu.vhd
+    Info (12022): Found design unit 1: ALU-behaviour File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/ALU.vhd Line: 21
+    Info (12023): Found entity 1: ALU File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/ALU.vhd Line: 11
+Info (12127): Elaborating entity "RISC" for the top level hierarchy
+Info (12128): Elaborating entity "Control_unit" for hierarchy "Control_unit:CU" File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/RISC.vhd Line: 141
+Info (12128): Elaborating entity "Data_path" for hierarchy "Data_path:DP" File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/RISC.vhd Line: 143
+Warning (10036): Verilog HDL or VHDL warning at Data_path.vhd(67): object "C_out" assigned a value but never read File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/Data_path.vhd Line: 67
+Warning (10036): Verilog HDL or VHDL warning at Data_path.vhd(68): object "Z_out" assigned a value but never read File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/Data_path.vhd Line: 68
+Info (12128): Elaborating entity "PC" for hierarchy "Data_path:DP|PC:chip_PC" File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/Data_path.vhd Line: 221
+Info (12128): Elaborating entity "Instruction_memory" for hierarchy "Data_path:DP|Instruction_memory:chip_IM" File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/Data_path.vhd Line: 224
+Warning (10492): VHDL Process Statement warning at Instruction_memory.vhd(52): signal "memory" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/Instruction_memory.vhd Line: 52
+Info (12128): Elaborating entity "Instruction_register" for hierarchy "Data_path:DP|Instruction_register:chip_IR" File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/Data_path.vhd Line: 227
+Warning (10492): VHDL Process Statement warning at Instruction_register.vhd(36): signal "indata" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/Instruction_register.vhd Line: 36
+Warning (10492): VHDL Process Statement warning at Instruction_register.vhd(37): signal "indata" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/Instruction_register.vhd Line: 37
+Warning (10492): VHDL Process Statement warning at Instruction_register.vhd(38): signal "indata" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/Instruction_register.vhd Line: 38
+Warning (10492): VHDL Process Statement warning at Instruction_register.vhd(39): signal "indata" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/Instruction_register.vhd Line: 39
+Warning (10492): VHDL Process Statement warning at Instruction_register.vhd(40): signal "indata" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/Instruction_register.vhd Line: 40
+Warning (10492): VHDL Process Statement warning at Instruction_register.vhd(41): signal "indata" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/Instruction_register.vhd Line: 41
+Warning (10492): VHDL Process Statement warning at Instruction_register.vhd(42): signal "indata" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/Instruction_register.vhd Line: 42
+Info (12128): Elaborating entity "RF_input_process" for hierarchy "Data_path:DP|RF_input_process:chip_RF_ip" File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/Data_path.vhd Line: 230
+Warning (10631): VHDL Process Statement warning at RF_input_process.vhd(24): inferring latch(es) for signal or variable "output_temp", which holds its previous value in one or more paths through the process File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/RF_input_process.vhd Line: 24
+Info (10041): Inferred latch for "output_temp[0]" at RF_input_process.vhd(24) File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/RF_input_process.vhd Line: 24
+Info (10041): Inferred latch for "output_temp[1]" at RF_input_process.vhd(24) File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/RF_input_process.vhd Line: 24
+Info (10041): Inferred latch for "output_temp[2]" at RF_input_process.vhd(24) File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/RF_input_process.vhd Line: 24
+Info (12128): Elaborating entity "Register_file" for hierarchy "Data_path:DP|Register_file:chip_RF" File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/Data_path.vhd Line: 233
+Info (12128): Elaborating entity "RF_datain_process" for hierarchy "Data_path:DP|RF_datain_process:chip_RF_data_in" File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/Data_path.vhd Line: 236
+Warning (10631): VHDL Process Statement warning at RF_datain_process.vhd(23): inferring latch(es) for signal or variable "output", which holds its previous value in one or more paths through the process File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/RF_datain_process.vhd Line: 23
+Info (10041): Inferred latch for "output[0]" at RF_datain_process.vhd(23) File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/RF_datain_process.vhd Line: 23
+Info (10041): Inferred latch for "output[1]" at RF_datain_process.vhd(23) File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/RF_datain_process.vhd Line: 23
+Info (10041): Inferred latch for "output[2]" at RF_datain_process.vhd(23) File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/RF_datain_process.vhd Line: 23
+Info (10041): Inferred latch for "output[3]" at RF_datain_process.vhd(23) File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/RF_datain_process.vhd Line: 23
+Info (10041): Inferred latch for "output[4]" at RF_datain_process.vhd(23) File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/RF_datain_process.vhd Line: 23
+Info (10041): Inferred latch for "output[5]" at RF_datain_process.vhd(23) File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/RF_datain_process.vhd Line: 23
+Info (10041): Inferred latch for "output[6]" at RF_datain_process.vhd(23) File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/RF_datain_process.vhd Line: 23
+Info (10041): Inferred latch for "output[7]" at RF_datain_process.vhd(23) File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/RF_datain_process.vhd Line: 23
+Info (10041): Inferred latch for "output[8]" at RF_datain_process.vhd(23) File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/RF_datain_process.vhd Line: 23
+Info (10041): Inferred latch for "output[9]" at RF_datain_process.vhd(23) File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/RF_datain_process.vhd Line: 23
+Info (10041): Inferred latch for "output[10]" at RF_datain_process.vhd(23) File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/RF_datain_process.vhd Line: 23
+Info (10041): Inferred latch for "output[11]" at RF_datain_process.vhd(23) File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/RF_datain_process.vhd Line: 23
+Info (10041): Inferred latch for "output[12]" at RF_datain_process.vhd(23) File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/RF_datain_process.vhd Line: 23
+Info (10041): Inferred latch for "output[13]" at RF_datain_process.vhd(23) File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/RF_datain_process.vhd Line: 23
+Info (10041): Inferred latch for "output[14]" at RF_datain_process.vhd(23) File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/RF_datain_process.vhd Line: 23
+Info (10041): Inferred latch for "output[15]" at RF_datain_process.vhd(23) File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/RF_datain_process.vhd Line: 23
+Info (12128): Elaborating entity "Sign_extender_six" for hierarchy "Data_path:DP|Sign_extender_six:chip_sign_extender_six" File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/Data_path.vhd Line: 239
+Info (12128): Elaborating entity "Sign_extender_nine" for hierarchy "Data_path:DP|Sign_extender_nine:chip_sign_extender_nine" File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/Data_path.vhd Line: 242
+Info (12128): Elaborating entity "ALU_input_logic" for hierarchy "Data_path:DP|ALU_input_logic:chip_ALU_input_logic" File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/Data_path.vhd Line: 245
+Warning (10540): VHDL Signal Declaration warning at ALU_input_logic.vhd(20): used explicit default value for signal "one" because signal was never assigned a value File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/ALU_input_logic.vhd Line: 20
+Warning (10492): VHDL Process Statement warning at ALU_input_logic.vhd(43): signal "one" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/ALU_input_logic.vhd Line: 43
+Warning (10492): VHDL Process Statement warning at ALU_input_logic.vhd(62): signal "one" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/ALU_input_logic.vhd Line: 62
+Warning (10631): VHDL Process Statement warning at ALU_input_logic.vhd(30): inferring latch(es) for signal or variable "alu_a_store", which holds its previous value in one or more paths through the process File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/ALU_input_logic.vhd Line: 30
+Warning (10631): VHDL Process Statement warning at ALU_input_logic.vhd(30): inferring latch(es) for signal or variable "alu_b_store", which holds its previous value in one or more paths through the process File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/ALU_input_logic.vhd Line: 30
+Warning (10631): VHDL Process Statement warning at ALU_input_logic.vhd(30): inferring latch(es) for signal or variable "to_nand_store", which holds its previous value in one or more paths through the process File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/ALU_input_logic.vhd Line: 30
+Info (10041): Inferred latch for "alu_b_store[0]" at ALU_input_logic.vhd(30) File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/ALU_input_logic.vhd Line: 30
+Info (10041): Inferred latch for "alu_b_store[1]" at ALU_input_logic.vhd(30) File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/ALU_input_logic.vhd Line: 30
+Info (10041): Inferred latch for "alu_b_store[2]" at ALU_input_logic.vhd(30) File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/ALU_input_logic.vhd Line: 30
+Info (10041): Inferred latch for "alu_b_store[3]" at ALU_input_logic.vhd(30) File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/ALU_input_logic.vhd Line: 30
+Info (10041): Inferred latch for "alu_b_store[4]" at ALU_input_logic.vhd(30) File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/ALU_input_logic.vhd Line: 30
+Info (10041): Inferred latch for "alu_b_store[5]" at ALU_input_logic.vhd(30) File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/ALU_input_logic.vhd Line: 30
+Info (10041): Inferred latch for "alu_b_store[6]" at ALU_input_logic.vhd(30) File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/ALU_input_logic.vhd Line: 30
+Info (10041): Inferred latch for "alu_b_store[7]" at ALU_input_logic.vhd(30) File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/ALU_input_logic.vhd Line: 30
+Info (10041): Inferred latch for "alu_b_store[8]" at ALU_input_logic.vhd(30) File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/ALU_input_logic.vhd Line: 30
+Info (10041): Inferred latch for "alu_b_store[9]" at ALU_input_logic.vhd(30) File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/ALU_input_logic.vhd Line: 30
+Info (10041): Inferred latch for "alu_b_store[10]" at ALU_input_logic.vhd(30) File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/ALU_input_logic.vhd Line: 30
+Info (10041): Inferred latch for "alu_b_store[11]" at ALU_input_logic.vhd(30) File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/ALU_input_logic.vhd Line: 30
+Info (10041): Inferred latch for "alu_b_store[12]" at ALU_input_logic.vhd(30) File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/ALU_input_logic.vhd Line: 30
+Info (10041): Inferred latch for "alu_b_store[13]" at ALU_input_logic.vhd(30) File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/ALU_input_logic.vhd Line: 30
+Info (10041): Inferred latch for "alu_b_store[14]" at ALU_input_logic.vhd(30) File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/ALU_input_logic.vhd Line: 30
+Info (10041): Inferred latch for "alu_b_store[15]" at ALU_input_logic.vhd(30) File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/ALU_input_logic.vhd Line: 30
+Info (10041): Inferred latch for "alu_a_store[0]" at ALU_input_logic.vhd(30) File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/ALU_input_logic.vhd Line: 30
+Info (10041): Inferred latch for "alu_a_store[1]" at ALU_input_logic.vhd(30) File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/ALU_input_logic.vhd Line: 30
+Info (10041): Inferred latch for "alu_a_store[2]" at ALU_input_logic.vhd(30) File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/ALU_input_logic.vhd Line: 30
+Info (10041): Inferred latch for "alu_a_store[3]" at ALU_input_logic.vhd(30) File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/ALU_input_logic.vhd Line: 30
+Info (10041): Inferred latch for "alu_a_store[4]" at ALU_input_logic.vhd(30) File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/ALU_input_logic.vhd Line: 30
+Info (10041): Inferred latch for "alu_a_store[5]" at ALU_input_logic.vhd(30) File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/ALU_input_logic.vhd Line: 30
+Info (10041): Inferred latch for "alu_a_store[6]" at ALU_input_logic.vhd(30) File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/ALU_input_logic.vhd Line: 30
+Info (10041): Inferred latch for "alu_a_store[7]" at ALU_input_logic.vhd(30) File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/ALU_input_logic.vhd Line: 30
+Info (10041): Inferred latch for "alu_a_store[8]" at ALU_input_logic.vhd(30) File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/ALU_input_logic.vhd Line: 30
+Info (10041): Inferred latch for "alu_a_store[9]" at ALU_input_logic.vhd(30) File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/ALU_input_logic.vhd Line: 30
+Info (10041): Inferred latch for "alu_a_store[10]" at ALU_input_logic.vhd(30) File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/ALU_input_logic.vhd Line: 30
+Info (10041): Inferred latch for "alu_a_store[11]" at ALU_input_logic.vhd(30) File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/ALU_input_logic.vhd Line: 30
+Info (10041): Inferred latch for "alu_a_store[12]" at ALU_input_logic.vhd(30) File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/ALU_input_logic.vhd Line: 30
+Info (10041): Inferred latch for "alu_a_store[13]" at ALU_input_logic.vhd(30) File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/ALU_input_logic.vhd Line: 30
+Info (10041): Inferred latch for "alu_a_store[14]" at ALU_input_logic.vhd(30) File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/ALU_input_logic.vhd Line: 30
+Info (10041): Inferred latch for "alu_a_store[15]" at ALU_input_logic.vhd(30) File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/ALU_input_logic.vhd Line: 30
+Info (12128): Elaborating entity "ALU" for hierarchy "Data_path:DP|ALU:chip_ALU" File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/Data_path.vhd Line: 248
+Warning (10492): VHDL Process Statement warning at ALU.vhd(57): signal "last_in1" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/ALU.vhd Line: 57
+Warning (10492): VHDL Process Statement warning at ALU.vhd(58): signal "last_in1" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/ALU.vhd Line: 58
+Warning (10492): VHDL Process Statement warning at ALU.vhd(59): signal "last_in1" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/ALU.vhd Line: 59
+Warning (10492): VHDL Process Statement warning at ALU.vhd(60): signal "last_in1" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/ALU.vhd Line: 60
+Warning (10492): VHDL Process Statement warning at ALU.vhd(61): signal "last_in2" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/ALU.vhd Line: 61
+Warning (10492): VHDL Process Statement warning at ALU.vhd(62): signal "last_in2" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/ALU.vhd Line: 62
+Warning (10492): VHDL Process Statement warning at ALU.vhd(63): signal "last_in2" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/ALU.vhd Line: 63
+Warning (10492): VHDL Process Statement warning at ALU.vhd(64): signal "last_in2" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/ALU.vhd Line: 64
+Warning (10492): VHDL Process Statement warning at ALU.vhd(66): signal "last_out" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/ALU.vhd Line: 66
+Warning (10492): VHDL Process Statement warning at ALU.vhd(67): signal "last_z" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/ALU.vhd Line: 67
+Warning (10492): VHDL Process Statement warning at ALU.vhd(71): signal "clock_counter" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/ALU.vhd Line: 71
+Warning (10492): VHDL Process Statement warning at ALU.vhd(73): signal "output_temp1" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/ALU.vhd Line: 73
+Warning (10492): VHDL Process Statement warning at ALU.vhd(74): signal "outz_temp1" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/ALU.vhd Line: 74
+Warning (10492): VHDL Process Statement warning at ALU.vhd(75): signal "output_temp1" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/ALU.vhd Line: 75
+Warning (10492): VHDL Process Statement warning at ALU.vhd(76): signal "outz_temp1" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/ALU.vhd Line: 76
+Warning (10492): VHDL Process Statement warning at ALU.vhd(78): signal "clock_counter" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/ALU.vhd Line: 78
+Warning (10492): VHDL Process Statement warning at ALU.vhd(79): signal "last_out" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/ALU.vhd Line: 79
+Warning (10492): VHDL Process Statement warning at ALU.vhd(80): signal "last_z" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/ALU.vhd Line: 80
+Warning (10492): VHDL Process Statement warning at ALU.vhd(83): signal "clock_counter" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/ALU.vhd Line: 83
+Warning (10492): VHDL Process Statement warning at ALU.vhd(85): signal "output_temp2" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/ALU.vhd Line: 85
+Warning (10492): VHDL Process Statement warning at ALU.vhd(86): signal "outz_temp2" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/ALU.vhd Line: 86
+Warning (10492): VHDL Process Statement warning at ALU.vhd(87): signal "output_temp2" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/ALU.vhd Line: 87
+Warning (10492): VHDL Process Statement warning at ALU.vhd(88): signal "outz_temp2" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/ALU.vhd Line: 88
+Warning (10492): VHDL Process Statement warning at ALU.vhd(90): signal "clock_counter" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/ALU.vhd Line: 90
+Warning (10492): VHDL Process Statement warning at ALU.vhd(91): signal "last_out" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/ALU.vhd Line: 91
+Warning (10492): VHDL Process Statement warning at ALU.vhd(92): signal "last_z" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/ALU.vhd Line: 92
+Warning (10631): VHDL Process Statement warning at ALU.vhd(55): inferring latch(es) for signal or variable "last_in1", which holds its previous value in one or more paths through the process File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/ALU.vhd Line: 55
+Warning (10631): VHDL Process Statement warning at ALU.vhd(55): inferring latch(es) for signal or variable "last_in2", which holds its previous value in one or more paths through the process File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/ALU.vhd Line: 55
+Warning (10631): VHDL Process Statement warning at ALU.vhd(55): inferring latch(es) for signal or variable "last_out", which holds its previous value in one or more paths through the process File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/ALU.vhd Line: 55
+Warning (10631): VHDL Process Statement warning at ALU.vhd(55): inferring latch(es) for signal or variable "last_z", which holds its previous value in one or more paths through the process File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/ALU.vhd Line: 55
+Info (10041): Inferred latch for "last_z" at ALU.vhd(55) File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/ALU.vhd Line: 55
+Info (10041): Inferred latch for "last_out[0]" at ALU.vhd(55) File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/ALU.vhd Line: 55
+Info (10041): Inferred latch for "last_out[1]" at ALU.vhd(55) File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/ALU.vhd Line: 55
+Info (10041): Inferred latch for "last_out[2]" at ALU.vhd(55) File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/ALU.vhd Line: 55
+Info (10041): Inferred latch for "last_out[3]" at ALU.vhd(55) File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/ALU.vhd Line: 55
+Info (10041): Inferred latch for "last_out[4]" at ALU.vhd(55) File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/ALU.vhd Line: 55
+Info (10041): Inferred latch for "last_out[5]" at ALU.vhd(55) File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/ALU.vhd Line: 55
+Info (10041): Inferred latch for "last_out[6]" at ALU.vhd(55) File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/ALU.vhd Line: 55
+Info (10041): Inferred latch for "last_out[7]" at ALU.vhd(55) File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/ALU.vhd Line: 55
+Info (10041): Inferred latch for "last_out[8]" at ALU.vhd(55) File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/ALU.vhd Line: 55
+Info (10041): Inferred latch for "last_out[9]" at ALU.vhd(55) File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/ALU.vhd Line: 55
+Info (10041): Inferred latch for "last_out[10]" at ALU.vhd(55) File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/ALU.vhd Line: 55
+Info (10041): Inferred latch for "last_out[11]" at ALU.vhd(55) File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/ALU.vhd Line: 55
+Info (10041): Inferred latch for "last_out[12]" at ALU.vhd(55) File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/ALU.vhd Line: 55
+Info (10041): Inferred latch for "last_out[13]" at ALU.vhd(55) File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/ALU.vhd Line: 55
+Info (10041): Inferred latch for "last_out[14]" at ALU.vhd(55) File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/ALU.vhd Line: 55
+Info (10041): Inferred latch for "last_out[15]" at ALU.vhd(55) File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/ALU.vhd Line: 55
+Info (10041): Inferred latch for "last_in2[0]" at ALU.vhd(55) File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/ALU.vhd Line: 55
+Info (10041): Inferred latch for "last_in2[1]" at ALU.vhd(55) File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/ALU.vhd Line: 55
+Info (10041): Inferred latch for "last_in2[2]" at ALU.vhd(55) File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/ALU.vhd Line: 55
+Info (10041): Inferred latch for "last_in2[3]" at ALU.vhd(55) File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/ALU.vhd Line: 55
+Info (10041): Inferred latch for "last_in2[4]" at ALU.vhd(55) File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/ALU.vhd Line: 55
+Info (10041): Inferred latch for "last_in2[5]" at ALU.vhd(55) File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/ALU.vhd Line: 55
+Info (10041): Inferred latch for "last_in2[6]" at ALU.vhd(55) File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/ALU.vhd Line: 55
+Info (10041): Inferred latch for "last_in2[7]" at ALU.vhd(55) File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/ALU.vhd Line: 55
+Info (10041): Inferred latch for "last_in2[8]" at ALU.vhd(55) File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/ALU.vhd Line: 55
+Info (10041): Inferred latch for "last_in2[9]" at ALU.vhd(55) File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/ALU.vhd Line: 55
+Info (10041): Inferred latch for "last_in2[10]" at ALU.vhd(55) File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/ALU.vhd Line: 55
+Info (10041): Inferred latch for "last_in2[11]" at ALU.vhd(55) File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/ALU.vhd Line: 55
+Info (10041): Inferred latch for "last_in2[12]" at ALU.vhd(55) File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/ALU.vhd Line: 55
+Info (10041): Inferred latch for "last_in2[13]" at ALU.vhd(55) File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/ALU.vhd Line: 55
+Info (10041): Inferred latch for "last_in2[14]" at ALU.vhd(55) File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/ALU.vhd Line: 55
+Info (10041): Inferred latch for "last_in2[15]" at ALU.vhd(55) File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/ALU.vhd Line: 55
+Info (10041): Inferred latch for "last_in1[0]" at ALU.vhd(55) File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/ALU.vhd Line: 55
+Info (10041): Inferred latch for "last_in1[1]" at ALU.vhd(55) File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/ALU.vhd Line: 55
+Info (10041): Inferred latch for "last_in1[2]" at ALU.vhd(55) File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/ALU.vhd Line: 55
+Info (10041): Inferred latch for "last_in1[3]" at ALU.vhd(55) File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/ALU.vhd Line: 55
+Info (10041): Inferred latch for "last_in1[4]" at ALU.vhd(55) File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/ALU.vhd Line: 55
+Info (10041): Inferred latch for "last_in1[5]" at ALU.vhd(55) File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/ALU.vhd Line: 55
+Info (10041): Inferred latch for "last_in1[6]" at ALU.vhd(55) File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/ALU.vhd Line: 55
+Info (10041): Inferred latch for "last_in1[7]" at ALU.vhd(55) File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/ALU.vhd Line: 55
+Info (10041): Inferred latch for "last_in1[8]" at ALU.vhd(55) File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/ALU.vhd Line: 55
+Info (10041): Inferred latch for "last_in1[9]" at ALU.vhd(55) File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/ALU.vhd Line: 55
+Info (10041): Inferred latch for "last_in1[10]" at ALU.vhd(55) File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/ALU.vhd Line: 55
+Info (10041): Inferred latch for "last_in1[11]" at ALU.vhd(55) File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/ALU.vhd Line: 55
+Info (10041): Inferred latch for "last_in1[12]" at ALU.vhd(55) File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/ALU.vhd Line: 55
+Info (10041): Inferred latch for "last_in1[13]" at ALU.vhd(55) File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/ALU.vhd Line: 55
+Info (10041): Inferred latch for "last_in1[14]" at ALU.vhd(55) File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/ALU.vhd Line: 55
+Info (10041): Inferred latch for "last_in1[15]" at ALU.vhd(55) File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/ALU.vhd Line: 55
+Info (12128): Elaborating entity "SixteenbitKogStonAddSub" for hierarchy "Data_path:DP|ALU:chip_ALU|SixteenbitKogStonAddSub:ADD" File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/ALU.vhd Line: 51
+Info (12128): Elaborating entity "XOR_gate" for hierarchy "Data_path:DP|ALU:chip_ALU|SixteenbitKogStonAddSub:ADD|XOR_gate:\XOR_neg:0:map_xor" File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/SixteenbitKogStonAddSub.vhd Line: 64
+Info (12128): Elaborating entity "NOT_gate" for hierarchy "Data_path:DP|ALU:chip_ALU|SixteenbitKogStonAddSub:ADD|XOR_gate:\XOR_neg:0:map_xor|NOT_gate:Chip_NOT1" File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/XOR_gate.vhd Line: 28
+Info (12128): Elaborating entity "AND_gate" for hierarchy "Data_path:DP|ALU:chip_ALU|SixteenbitKogStonAddSub:ADD|XOR_gate:\XOR_neg:0:map_xor|AND_gate:Chip_AND1" File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/XOR_gate.vhd Line: 34
+Info (12128): Elaborating entity "OR_gate" for hierarchy "Data_path:DP|ALU:chip_ALU|SixteenbitKogStonAddSub:ADD|XOR_gate:\XOR_neg:0:map_xor|OR_gate:Chip_OR" File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/XOR_gate.vhd Line: 40
+Info (12128): Elaborating entity "Generator" for hierarchy "Data_path:DP|ALU:chip_ALU|SixteenbitKogStonAddSub:ADD|Generator:\Stage_0:0:map_gen_0" File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/SixteenbitKogStonAddSub.vhd Line: 69
+Info (12128): Elaborating entity "GroupGenerator" for hierarchy "Data_path:DP|ALU:chip_ALU|SixteenbitKogStonAddSub:ADD|GroupGenerator:\Stage_10:0:map_car_10" File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/SixteenbitKogStonAddSub.vhd Line: 76
+Info (12128): Elaborating entity "Carry_oper" for hierarchy "Data_path:DP|ALU:chip_ALU|SixteenbitKogStonAddSub:ADD|Carry_oper:\Stage_11:0:map_car_11" File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/SixteenbitKogStonAddSub.vhd Line: 81
+Info (12128): Elaborating entity "SixteenbitNAND" for hierarchy "Data_path:DP|ALU:chip_ALU|SixteenbitNAND:NAND_map" File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/ALU.vhd Line: 52
+Info (12128): Elaborating entity "Status_Registers" for hierarchy "Data_path:DP|Status_Registers:chip_SReg" File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/Data_path.vhd Line: 251
+Info (12128): Elaborating entity "PC_write" for hierarchy "Data_path:DP|PC_write:chip_PC_write" File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/Data_path.vhd Line: 254
+Info (12128): Elaborating entity "Temp_LA_SA" for hierarchy "Data_path:DP|Temp_LA_SA:chip_LA_SA" File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/Data_path.vhd Line: 257
+Info (12128): Elaborating entity "memory_address_input" for hierarchy "Data_path:DP|memory_address_input:chip_memory_address_input" File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/Data_path.vhd Line: 260
+Warning (10631): VHDL Process Statement warning at memory_address_input.vhd(22): inferring latch(es) for signal or variable "address", which holds its previous value in one or more paths through the process File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/memory_address_input.vhd Line: 22
+Info (10041): Inferred latch for "address[0]" at memory_address_input.vhd(22) File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/memory_address_input.vhd Line: 22
+Info (10041): Inferred latch for "address[1]" at memory_address_input.vhd(22) File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/memory_address_input.vhd Line: 22
+Info (10041): Inferred latch for "address[2]" at memory_address_input.vhd(22) File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/memory_address_input.vhd Line: 22
+Info (10041): Inferred latch for "address[3]" at memory_address_input.vhd(22) File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/memory_address_input.vhd Line: 22
+Info (10041): Inferred latch for "address[4]" at memory_address_input.vhd(22) File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/memory_address_input.vhd Line: 22
+Info (10041): Inferred latch for "address[5]" at memory_address_input.vhd(22) File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/memory_address_input.vhd Line: 22
+Info (10041): Inferred latch for "address[6]" at memory_address_input.vhd(22) File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/memory_address_input.vhd Line: 22
+Info (10041): Inferred latch for "address[7]" at memory_address_input.vhd(22) File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/memory_address_input.vhd Line: 22
+Info (10041): Inferred latch for "address[8]" at memory_address_input.vhd(22) File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/memory_address_input.vhd Line: 22
+Info (10041): Inferred latch for "address[9]" at memory_address_input.vhd(22) File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/memory_address_input.vhd Line: 22
+Info (10041): Inferred latch for "address[10]" at memory_address_input.vhd(22) File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/memory_address_input.vhd Line: 22
+Info (10041): Inferred latch for "address[11]" at memory_address_input.vhd(22) File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/memory_address_input.vhd Line: 22
+Info (10041): Inferred latch for "address[12]" at memory_address_input.vhd(22) File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/memory_address_input.vhd Line: 22
+Info (10041): Inferred latch for "address[13]" at memory_address_input.vhd(22) File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/memory_address_input.vhd Line: 22
+Info (10041): Inferred latch for "address[14]" at memory_address_input.vhd(22) File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/memory_address_input.vhd Line: 22
+Info (10041): Inferred latch for "address[15]" at memory_address_input.vhd(22) File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/memory_address_input.vhd Line: 22
+Info (12128): Elaborating entity "memory" for hierarchy "Data_path:DP|memory:chip_memory" File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/Data_path.vhd Line: 263
+Info (12128): Elaborating entity "RF_RA_input" for hierarchy "Data_path:DP|RF_RA_input:chip_RF_RA_input" File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/Data_path.vhd Line: 266
+Warning (10631): VHDL Process Statement warning at RF_RA_input.vhd(22): inferring latch(es) for signal or variable "RA_RF_store", which holds its previous value in one or more paths through the process File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/RF_RA_input.vhd Line: 22
+Info (10041): Inferred latch for "RA_RF_store[0]" at RF_RA_input.vhd(22) File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/RF_RA_input.vhd Line: 22
+Info (10041): Inferred latch for "RA_RF_store[1]" at RF_RA_input.vhd(22) File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/RF_RA_input.vhd Line: 22
+Info (10041): Inferred latch for "RA_RF_store[2]" at RF_RA_input.vhd(22) File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/RF_RA_input.vhd Line: 22
+Warning (127007): Memory Initialization File or Hexadecimal (Intel-Format) File "D:/IITB/Semester 4/CS 226/Project/IITB-Proc/db/RISC.ram0_Instruction_memory_895be9cc.hdl.mif" contains "don't care" values -- overwriting them with 0s
+Warning (14025): LATCH primitive "Data_path:DP|RF_datain_process:chip_RF_data_in|output[0]" is permanently disabled File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/RF_datain_process.vhd Line: 23
+Warning (14025): LATCH primitive "Data_path:DP|RF_datain_process:chip_RF_data_in|output[1]" is permanently disabled File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/RF_datain_process.vhd Line: 23
+Warning (14025): LATCH primitive "Data_path:DP|RF_datain_process:chip_RF_data_in|output[2]" is permanently disabled File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/RF_datain_process.vhd Line: 23
+Warning (14025): LATCH primitive "Data_path:DP|RF_datain_process:chip_RF_data_in|output[3]" is permanently disabled File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/RF_datain_process.vhd Line: 23
+Warning (14025): LATCH primitive "Data_path:DP|RF_datain_process:chip_RF_data_in|output[4]" is permanently disabled File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/RF_datain_process.vhd Line: 23
+Warning (14025): LATCH primitive "Data_path:DP|RF_datain_process:chip_RF_data_in|output[5]" is permanently disabled File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/RF_datain_process.vhd Line: 23
+Warning (14025): LATCH primitive "Data_path:DP|RF_datain_process:chip_RF_data_in|output[6]" is permanently disabled File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/RF_datain_process.vhd Line: 23
+Warning (14025): LATCH primitive "Data_path:DP|RF_datain_process:chip_RF_data_in|output[7]" is permanently disabled File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/RF_datain_process.vhd Line: 23
+Warning (14025): LATCH primitive "Data_path:DP|RF_datain_process:chip_RF_data_in|output[8]" is permanently disabled File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/RF_datain_process.vhd Line: 23
+Warning (14025): LATCH primitive "Data_path:DP|RF_datain_process:chip_RF_data_in|output[9]" is permanently disabled File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/RF_datain_process.vhd Line: 23
+Warning (14025): LATCH primitive "Data_path:DP|RF_datain_process:chip_RF_data_in|output[10]" is permanently disabled File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/RF_datain_process.vhd Line: 23
+Warning (14025): LATCH primitive "Data_path:DP|RF_datain_process:chip_RF_data_in|output[11]" is permanently disabled File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/RF_datain_process.vhd Line: 23
+Warning (14025): LATCH primitive "Data_path:DP|RF_datain_process:chip_RF_data_in|output[12]" is permanently disabled File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/RF_datain_process.vhd Line: 23
+Warning (14025): LATCH primitive "Data_path:DP|RF_datain_process:chip_RF_data_in|output[13]" is permanently disabled File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/RF_datain_process.vhd Line: 23
+Warning (14025): LATCH primitive "Data_path:DP|RF_datain_process:chip_RF_data_in|output[14]" is permanently disabled File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/RF_datain_process.vhd Line: 23
+Warning (14025): LATCH primitive "Data_path:DP|RF_datain_process:chip_RF_data_in|output[15]" is permanently disabled File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/RF_datain_process.vhd Line: 23
+Warning (14026): LATCH primitive "Data_path:DP|ALU_input_logic:chip_ALU_input_logic|alu_b_store[0]" is permanently enabled File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/ALU_input_logic.vhd Line: 30
+Warning (14026): LATCH primitive "Data_path:DP|ALU_input_logic:chip_ALU_input_logic|alu_a_store[0]" is permanently enabled File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/ALU_input_logic.vhd Line: 30
+Warning (14026): LATCH primitive "Data_path:DP|ALU_input_logic:chip_ALU_input_logic|alu_a_store[1]" is permanently enabled File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/ALU_input_logic.vhd Line: 30
+Warning (14026): LATCH primitive "Data_path:DP|ALU_input_logic:chip_ALU_input_logic|alu_a_store[2]" is permanently enabled File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/ALU_input_logic.vhd Line: 30
+Warning (14026): LATCH primitive "Data_path:DP|ALU_input_logic:chip_ALU_input_logic|alu_a_store[3]" is permanently enabled File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/ALU_input_logic.vhd Line: 30
+Warning (14026): LATCH primitive "Data_path:DP|ALU_input_logic:chip_ALU_input_logic|alu_a_store[4]" is permanently enabled File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/ALU_input_logic.vhd Line: 30
+Warning (14026): LATCH primitive "Data_path:DP|ALU_input_logic:chip_ALU_input_logic|alu_a_store[5]" is permanently enabled File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/ALU_input_logic.vhd Line: 30
+Warning (14026): LATCH primitive "Data_path:DP|ALU_input_logic:chip_ALU_input_logic|alu_a_store[6]" is permanently enabled File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/ALU_input_logic.vhd Line: 30
+Warning (14026): LATCH primitive "Data_path:DP|ALU_input_logic:chip_ALU_input_logic|alu_a_store[7]" is permanently enabled File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/ALU_input_logic.vhd Line: 30
+Warning (14026): LATCH primitive "Data_path:DP|ALU_input_logic:chip_ALU_input_logic|alu_a_store[8]" is permanently enabled File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/ALU_input_logic.vhd Line: 30
+Warning (14026): LATCH primitive "Data_path:DP|ALU_input_logic:chip_ALU_input_logic|alu_a_store[9]" is permanently enabled File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/ALU_input_logic.vhd Line: 30
+Warning (14026): LATCH primitive "Data_path:DP|ALU_input_logic:chip_ALU_input_logic|alu_a_store[10]" is permanently enabled File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/ALU_input_logic.vhd Line: 30
+Warning (14026): LATCH primitive "Data_path:DP|ALU_input_logic:chip_ALU_input_logic|alu_a_store[11]" is permanently enabled File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/ALU_input_logic.vhd Line: 30
+Warning (14026): LATCH primitive "Data_path:DP|ALU_input_logic:chip_ALU_input_logic|alu_a_store[12]" is permanently enabled File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/ALU_input_logic.vhd Line: 30
+Warning (14026): LATCH primitive "Data_path:DP|ALU_input_logic:chip_ALU_input_logic|alu_a_store[13]" is permanently enabled File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/ALU_input_logic.vhd Line: 30
+Warning (14026): LATCH primitive "Data_path:DP|ALU_input_logic:chip_ALU_input_logic|alu_a_store[14]" is permanently enabled File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/ALU_input_logic.vhd Line: 30
+Warning (14026): LATCH primitive "Data_path:DP|ALU_input_logic:chip_ALU_input_logic|alu_a_store[15]" is permanently enabled File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/ALU_input_logic.vhd Line: 30
+Warning (13012): Latch Data_path:DP|ALU:chip_ALU|last_out[0] has unsafe behavior File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/ALU.vhd Line: 55
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal Control_unit:CU|pc_update_t File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/Control_unit.vhd Line: 163
+Warning (13012): Latch Data_path:DP|ALU:chip_ALU|last_in1[0] has unsafe behavior File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/ALU.vhd Line: 55
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal Control_unit:CU|pc_update_t File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/Control_unit.vhd Line: 163
+Warning (13012): Latch Data_path:DP|ALU:chip_ALU|last_in1[1] has unsafe behavior File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/ALU.vhd Line: 55
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal Control_unit:CU|pc_update_t File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/Control_unit.vhd Line: 163
+Warning (13012): Latch Data_path:DP|ALU:chip_ALU|last_in1[2] has unsafe behavior File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/ALU.vhd Line: 55
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal Control_unit:CU|pc_update_t File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/Control_unit.vhd Line: 163
+Warning (13012): Latch Data_path:DP|ALU:chip_ALU|last_in1[3] has unsafe behavior File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/ALU.vhd Line: 55
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal Control_unit:CU|pc_update_t File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/Control_unit.vhd Line: 163
+Warning (13012): Latch Data_path:DP|ALU:chip_ALU|last_in1[4] has unsafe behavior File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/ALU.vhd Line: 55
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal Control_unit:CU|pc_update_t File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/Control_unit.vhd Line: 163
+Warning (13012): Latch Data_path:DP|ALU:chip_ALU|last_in1[5] has unsafe behavior File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/ALU.vhd Line: 55
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal Control_unit:CU|pc_update_t File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/Control_unit.vhd Line: 163
+Warning (13012): Latch Data_path:DP|ALU:chip_ALU|last_in1[6] has unsafe behavior File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/ALU.vhd Line: 55
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal Control_unit:CU|pc_update_t File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/Control_unit.vhd Line: 163
+Warning (13012): Latch Data_path:DP|ALU:chip_ALU|last_in1[7] has unsafe behavior File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/ALU.vhd Line: 55
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal Control_unit:CU|pc_update_t File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/Control_unit.vhd Line: 163
+Warning (13012): Latch Data_path:DP|ALU:chip_ALU|last_in1[8] has unsafe behavior File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/ALU.vhd Line: 55
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal Control_unit:CU|pc_update_t File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/Control_unit.vhd Line: 163
+Warning (13012): Latch Data_path:DP|ALU:chip_ALU|last_in1[9] has unsafe behavior File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/ALU.vhd Line: 55
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal Control_unit:CU|pc_update_t File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/Control_unit.vhd Line: 163
+Warning (13012): Latch Data_path:DP|ALU:chip_ALU|last_in1[10] has unsafe behavior File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/ALU.vhd Line: 55
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal Control_unit:CU|pc_update_t File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/Control_unit.vhd Line: 163
+Warning (13012): Latch Data_path:DP|ALU:chip_ALU|last_in1[11] has unsafe behavior File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/ALU.vhd Line: 55
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal Control_unit:CU|pc_update_t File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/Control_unit.vhd Line: 163
+Warning (13012): Latch Data_path:DP|ALU:chip_ALU|last_in1[12] has unsafe behavior File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/ALU.vhd Line: 55
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal Control_unit:CU|pc_update_t File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/Control_unit.vhd Line: 163
+Warning (13012): Latch Data_path:DP|ALU:chip_ALU|last_in1[13] has unsafe behavior File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/ALU.vhd Line: 55
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal Control_unit:CU|pc_update_t File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/Control_unit.vhd Line: 163
+Warning (13012): Latch Data_path:DP|ALU:chip_ALU|last_in1[14] has unsafe behavior File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/ALU.vhd Line: 55
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal Control_unit:CU|pc_update_t File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/Control_unit.vhd Line: 163
+Warning (13012): Latch Data_path:DP|ALU:chip_ALU|last_in1[15] has unsafe behavior File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/ALU.vhd Line: 55
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal Control_unit:CU|pc_update_t File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/Control_unit.vhd Line: 163
+Warning (13012): Latch Data_path:DP|ALU:chip_ALU|last_in2[0] has unsafe behavior File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/ALU.vhd Line: 55
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal Control_unit:CU|pc_update_t File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/Control_unit.vhd Line: 163
+Warning (13012): Latch Data_path:DP|ALU:chip_ALU|last_out[1] has unsafe behavior File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/ALU.vhd Line: 55
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal Control_unit:CU|pc_update_t File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/Control_unit.vhd Line: 163
+Warning (13012): Latch Data_path:DP|ALU:chip_ALU|last_out[2] has unsafe behavior File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/ALU.vhd Line: 55
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal Control_unit:CU|pc_update_t File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/Control_unit.vhd Line: 163
+Warning (13012): Latch Data_path:DP|ALU:chip_ALU|last_out[3] has unsafe behavior File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/ALU.vhd Line: 55
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal Control_unit:CU|pc_update_t File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/Control_unit.vhd Line: 163
+Warning (13012): Latch Data_path:DP|ALU:chip_ALU|last_out[4] has unsafe behavior File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/ALU.vhd Line: 55
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal Control_unit:CU|pc_update_t File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/Control_unit.vhd Line: 163
+Warning (13012): Latch Data_path:DP|ALU:chip_ALU|last_out[5] has unsafe behavior File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/ALU.vhd Line: 55
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal Control_unit:CU|pc_update_t File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/Control_unit.vhd Line: 163
+Warning (13012): Latch Data_path:DP|ALU:chip_ALU|last_out[6] has unsafe behavior File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/ALU.vhd Line: 55
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal Control_unit:CU|pc_update_t File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/Control_unit.vhd Line: 163
+Warning (13012): Latch Data_path:DP|ALU:chip_ALU|last_out[7] has unsafe behavior File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/ALU.vhd Line: 55
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal Control_unit:CU|pc_update_t File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/Control_unit.vhd Line: 163
+Warning (13012): Latch Data_path:DP|ALU:chip_ALU|last_out[8] has unsafe behavior File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/ALU.vhd Line: 55
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal Control_unit:CU|pc_update_t File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/Control_unit.vhd Line: 163
+Warning (13012): Latch Data_path:DP|ALU:chip_ALU|last_out[9] has unsafe behavior File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/ALU.vhd Line: 55
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal Control_unit:CU|pc_update_t File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/Control_unit.vhd Line: 163
+Warning (13012): Latch Data_path:DP|ALU:chip_ALU|last_out[10] has unsafe behavior File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/ALU.vhd Line: 55
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal Control_unit:CU|pc_update_t File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/Control_unit.vhd Line: 163
+Warning (13012): Latch Data_path:DP|ALU:chip_ALU|last_out[11] has unsafe behavior File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/ALU.vhd Line: 55
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal Control_unit:CU|pc_update_t File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/Control_unit.vhd Line: 163
+Warning (13012): Latch Data_path:DP|ALU:chip_ALU|last_out[12] has unsafe behavior File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/ALU.vhd Line: 55
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal Control_unit:CU|pc_update_t File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/Control_unit.vhd Line: 163
+Warning (13012): Latch Data_path:DP|ALU:chip_ALU|last_out[13] has unsafe behavior File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/ALU.vhd Line: 55
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal Control_unit:CU|pc_update_t File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/Control_unit.vhd Line: 163
+Warning (13012): Latch Data_path:DP|ALU:chip_ALU|last_out[14] has unsafe behavior File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/ALU.vhd Line: 55
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal Control_unit:CU|pc_update_t File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/Control_unit.vhd Line: 163
+Warning (13012): Latch Data_path:DP|ALU:chip_ALU|last_out[15] has unsafe behavior File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/ALU.vhd Line: 55
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal Control_unit:CU|pc_update_t File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/Control_unit.vhd Line: 163
+Warning (13024): Output pins are stuck at VCC or GND
+    Warning (13410): Pin "indata_received[0]" is stuck at GND File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/RISC.vhd Line: 15
+    Warning (13410): Pin "indata_received[1]" is stuck at GND File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/RISC.vhd Line: 15
+    Warning (13410): Pin "indata_received[2]" is stuck at GND File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/RISC.vhd Line: 15
+    Warning (13410): Pin "indata_received[3]" is stuck at GND File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/RISC.vhd Line: 15
+    Warning (13410): Pin "indata_received[4]" is stuck at GND File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/RISC.vhd Line: 15
+    Warning (13410): Pin "indata_received[5]" is stuck at GND File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/RISC.vhd Line: 15
+    Warning (13410): Pin "indata_received[6]" is stuck at GND File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/RISC.vhd Line: 15
+    Warning (13410): Pin "indata_received[7]" is stuck at GND File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/RISC.vhd Line: 15
+    Warning (13410): Pin "indata_received[8]" is stuck at GND File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/RISC.vhd Line: 15
+    Warning (13410): Pin "indata_received[9]" is stuck at GND File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/RISC.vhd Line: 15
+    Warning (13410): Pin "indata_received[10]" is stuck at GND File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/RISC.vhd Line: 15
+    Warning (13410): Pin "indata_received[11]" is stuck at GND File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/RISC.vhd Line: 15
+    Warning (13410): Pin "indata_received[12]" is stuck at GND File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/RISC.vhd Line: 15
+    Warning (13410): Pin "indata_received[13]" is stuck at GND File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/RISC.vhd Line: 15
+    Warning (13410): Pin "indata_received[14]" is stuck at GND File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/RISC.vhd Line: 15
+    Warning (13410): Pin "indata_received[15]" is stuck at GND File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/RISC.vhd Line: 15
+    Warning (13410): Pin "reg_0[0]" is stuck at GND File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/RISC.vhd Line: 16
+    Warning (13410): Pin "reg_0[1]" is stuck at GND File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/RISC.vhd Line: 16
+    Warning (13410): Pin "reg_0[2]" is stuck at GND File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/RISC.vhd Line: 16
+    Warning (13410): Pin "reg_0[3]" is stuck at GND File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/RISC.vhd Line: 16
+    Warning (13410): Pin "reg_0[4]" is stuck at GND File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/RISC.vhd Line: 16
+    Warning (13410): Pin "reg_0[5]" is stuck at GND File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/RISC.vhd Line: 16
+    Warning (13410): Pin "reg_0[6]" is stuck at GND File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/RISC.vhd Line: 16
+    Warning (13410): Pin "reg_0[7]" is stuck at GND File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/RISC.vhd Line: 16
+    Warning (13410): Pin "reg_0[8]" is stuck at GND File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/RISC.vhd Line: 16
+    Warning (13410): Pin "reg_0[9]" is stuck at GND File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/RISC.vhd Line: 16
+    Warning (13410): Pin "reg_0[10]" is stuck at GND File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/RISC.vhd Line: 16
+    Warning (13410): Pin "reg_0[11]" is stuck at GND File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/RISC.vhd Line: 16
+    Warning (13410): Pin "reg_0[12]" is stuck at GND File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/RISC.vhd Line: 16
+    Warning (13410): Pin "reg_0[13]" is stuck at GND File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/RISC.vhd Line: 16
+    Warning (13410): Pin "reg_0[14]" is stuck at GND File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/RISC.vhd Line: 16
+    Warning (13410): Pin "reg_0[15]" is stuck at GND File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/RISC.vhd Line: 16
+    Warning (13410): Pin "reg_1[0]" is stuck at GND File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/RISC.vhd Line: 17
+    Warning (13410): Pin "reg_1[1]" is stuck at GND File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/RISC.vhd Line: 17
+    Warning (13410): Pin "reg_1[2]" is stuck at GND File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/RISC.vhd Line: 17
+    Warning (13410): Pin "reg_1[3]" is stuck at GND File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/RISC.vhd Line: 17
+    Warning (13410): Pin "reg_1[4]" is stuck at GND File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/RISC.vhd Line: 17
+    Warning (13410): Pin "reg_1[5]" is stuck at GND File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/RISC.vhd Line: 17
+    Warning (13410): Pin "reg_1[6]" is stuck at GND File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/RISC.vhd Line: 17
+    Warning (13410): Pin "reg_1[7]" is stuck at GND File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/RISC.vhd Line: 17
+    Warning (13410): Pin "reg_1[8]" is stuck at GND File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/RISC.vhd Line: 17
+    Warning (13410): Pin "reg_1[9]" is stuck at GND File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/RISC.vhd Line: 17
+    Warning (13410): Pin "reg_1[10]" is stuck at GND File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/RISC.vhd Line: 17
+    Warning (13410): Pin "reg_1[11]" is stuck at GND File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/RISC.vhd Line: 17
+    Warning (13410): Pin "reg_1[12]" is stuck at GND File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/RISC.vhd Line: 17
+    Warning (13410): Pin "reg_1[13]" is stuck at GND File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/RISC.vhd Line: 17
+    Warning (13410): Pin "reg_1[14]" is stuck at GND File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/RISC.vhd Line: 17
+    Warning (13410): Pin "reg_1[15]" is stuck at GND File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/RISC.vhd Line: 17
+    Warning (13410): Pin "reg_2[0]" is stuck at GND File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/RISC.vhd Line: 18
+    Warning (13410): Pin "reg_2[1]" is stuck at GND File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/RISC.vhd Line: 18
+    Warning (13410): Pin "reg_2[2]" is stuck at GND File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/RISC.vhd Line: 18
+    Warning (13410): Pin "reg_2[3]" is stuck at GND File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/RISC.vhd Line: 18
+    Warning (13410): Pin "reg_2[4]" is stuck at GND File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/RISC.vhd Line: 18
+    Warning (13410): Pin "reg_2[5]" is stuck at GND File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/RISC.vhd Line: 18
+    Warning (13410): Pin "reg_2[6]" is stuck at GND File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/RISC.vhd Line: 18
+    Warning (13410): Pin "reg_2[7]" is stuck at GND File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/RISC.vhd Line: 18
+    Warning (13410): Pin "reg_2[8]" is stuck at GND File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/RISC.vhd Line: 18
+    Warning (13410): Pin "reg_2[9]" is stuck at GND File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/RISC.vhd Line: 18
+    Warning (13410): Pin "reg_2[10]" is stuck at GND File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/RISC.vhd Line: 18
+    Warning (13410): Pin "reg_2[11]" is stuck at GND File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/RISC.vhd Line: 18
+    Warning (13410): Pin "reg_2[12]" is stuck at GND File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/RISC.vhd Line: 18
+    Warning (13410): Pin "reg_2[13]" is stuck at GND File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/RISC.vhd Line: 18
+    Warning (13410): Pin "reg_2[14]" is stuck at GND File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/RISC.vhd Line: 18
+    Warning (13410): Pin "reg_2[15]" is stuck at GND File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/RISC.vhd Line: 18
+    Warning (13410): Pin "reg_3[0]" is stuck at GND File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/RISC.vhd Line: 19
+    Warning (13410): Pin "reg_3[1]" is stuck at GND File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/RISC.vhd Line: 19
+    Warning (13410): Pin "reg_3[2]" is stuck at GND File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/RISC.vhd Line: 19
+    Warning (13410): Pin "reg_3[3]" is stuck at GND File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/RISC.vhd Line: 19
+    Warning (13410): Pin "reg_3[4]" is stuck at GND File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/RISC.vhd Line: 19
+    Warning (13410): Pin "reg_3[5]" is stuck at GND File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/RISC.vhd Line: 19
+    Warning (13410): Pin "reg_3[6]" is stuck at GND File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/RISC.vhd Line: 19
+    Warning (13410): Pin "reg_3[7]" is stuck at GND File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/RISC.vhd Line: 19
+    Warning (13410): Pin "reg_3[8]" is stuck at GND File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/RISC.vhd Line: 19
+    Warning (13410): Pin "reg_3[9]" is stuck at GND File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/RISC.vhd Line: 19
+    Warning (13410): Pin "reg_3[10]" is stuck at GND File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/RISC.vhd Line: 19
+    Warning (13410): Pin "reg_3[11]" is stuck at GND File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/RISC.vhd Line: 19
+    Warning (13410): Pin "reg_3[12]" is stuck at GND File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/RISC.vhd Line: 19
+    Warning (13410): Pin "reg_3[13]" is stuck at GND File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/RISC.vhd Line: 19
+    Warning (13410): Pin "reg_3[14]" is stuck at GND File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/RISC.vhd Line: 19
+    Warning (13410): Pin "reg_3[15]" is stuck at GND File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/RISC.vhd Line: 19
+    Warning (13410): Pin "reg_4[0]" is stuck at GND File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/RISC.vhd Line: 20
+    Warning (13410): Pin "reg_4[1]" is stuck at GND File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/RISC.vhd Line: 20
+    Warning (13410): Pin "reg_4[2]" is stuck at GND File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/RISC.vhd Line: 20
+    Warning (13410): Pin "reg_4[3]" is stuck at GND File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/RISC.vhd Line: 20
+    Warning (13410): Pin "reg_4[4]" is stuck at GND File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/RISC.vhd Line: 20
+    Warning (13410): Pin "reg_4[5]" is stuck at GND File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/RISC.vhd Line: 20
+    Warning (13410): Pin "reg_4[6]" is stuck at GND File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/RISC.vhd Line: 20
+    Warning (13410): Pin "reg_4[7]" is stuck at GND File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/RISC.vhd Line: 20
+    Warning (13410): Pin "reg_4[8]" is stuck at GND File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/RISC.vhd Line: 20
+    Warning (13410): Pin "reg_4[9]" is stuck at GND File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/RISC.vhd Line: 20
+    Warning (13410): Pin "reg_4[10]" is stuck at GND File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/RISC.vhd Line: 20
+    Warning (13410): Pin "reg_4[11]" is stuck at GND File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/RISC.vhd Line: 20
+    Warning (13410): Pin "reg_4[12]" is stuck at GND File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/RISC.vhd Line: 20
+    Warning (13410): Pin "reg_4[13]" is stuck at GND File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/RISC.vhd Line: 20
+    Warning (13410): Pin "reg_4[14]" is stuck at GND File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/RISC.vhd Line: 20
+    Warning (13410): Pin "reg_4[15]" is stuck at GND File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/RISC.vhd Line: 20
+    Warning (13410): Pin "reg_5[0]" is stuck at GND File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/RISC.vhd Line: 21
+    Warning (13410): Pin "reg_5[1]" is stuck at GND File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/RISC.vhd Line: 21
+    Warning (13410): Pin "reg_5[2]" is stuck at GND File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/RISC.vhd Line: 21
+    Warning (13410): Pin "reg_5[3]" is stuck at GND File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/RISC.vhd Line: 21
+    Warning (13410): Pin "reg_5[4]" is stuck at GND File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/RISC.vhd Line: 21
+    Warning (13410): Pin "reg_5[5]" is stuck at GND File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/RISC.vhd Line: 21
+    Warning (13410): Pin "reg_5[6]" is stuck at GND File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/RISC.vhd Line: 21
+    Warning (13410): Pin "reg_5[7]" is stuck at GND File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/RISC.vhd Line: 21
+    Warning (13410): Pin "reg_5[8]" is stuck at GND File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/RISC.vhd Line: 21
+    Warning (13410): Pin "reg_5[9]" is stuck at GND File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/RISC.vhd Line: 21
+    Warning (13410): Pin "reg_5[10]" is stuck at GND File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/RISC.vhd Line: 21
+    Warning (13410): Pin "reg_5[11]" is stuck at GND File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/RISC.vhd Line: 21
+    Warning (13410): Pin "reg_5[12]" is stuck at GND File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/RISC.vhd Line: 21
+    Warning (13410): Pin "reg_5[13]" is stuck at GND File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/RISC.vhd Line: 21
+    Warning (13410): Pin "reg_5[14]" is stuck at GND File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/RISC.vhd Line: 21
+    Warning (13410): Pin "reg_5[15]" is stuck at GND File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/RISC.vhd Line: 21
+    Warning (13410): Pin "reg_6[0]" is stuck at GND File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/RISC.vhd Line: 22
+    Warning (13410): Pin "reg_6[1]" is stuck at GND File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/RISC.vhd Line: 22
+    Warning (13410): Pin "reg_6[2]" is stuck at GND File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/RISC.vhd Line: 22
+    Warning (13410): Pin "reg_6[3]" is stuck at GND File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/RISC.vhd Line: 22
+    Warning (13410): Pin "reg_6[4]" is stuck at GND File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/RISC.vhd Line: 22
+    Warning (13410): Pin "reg_6[5]" is stuck at GND File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/RISC.vhd Line: 22
+    Warning (13410): Pin "reg_6[6]" is stuck at GND File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/RISC.vhd Line: 22
+    Warning (13410): Pin "reg_6[7]" is stuck at GND File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/RISC.vhd Line: 22
+    Warning (13410): Pin "reg_6[8]" is stuck at GND File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/RISC.vhd Line: 22
+    Warning (13410): Pin "reg_6[9]" is stuck at GND File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/RISC.vhd Line: 22
+    Warning (13410): Pin "reg_6[10]" is stuck at GND File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/RISC.vhd Line: 22
+    Warning (13410): Pin "reg_6[11]" is stuck at GND File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/RISC.vhd Line: 22
+    Warning (13410): Pin "reg_6[12]" is stuck at GND File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/RISC.vhd Line: 22
+    Warning (13410): Pin "reg_6[13]" is stuck at GND File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/RISC.vhd Line: 22
+    Warning (13410): Pin "reg_6[14]" is stuck at GND File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/RISC.vhd Line: 22
+    Warning (13410): Pin "reg_6[15]" is stuck at GND File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/RISC.vhd Line: 22
+    Warning (13410): Pin "reg_7[0]" is stuck at GND File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/RISC.vhd Line: 23
+    Warning (13410): Pin "reg_7[1]" is stuck at GND File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/RISC.vhd Line: 23
+    Warning (13410): Pin "reg_7[2]" is stuck at GND File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/RISC.vhd Line: 23
+    Warning (13410): Pin "reg_7[3]" is stuck at GND File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/RISC.vhd Line: 23
+    Warning (13410): Pin "reg_7[4]" is stuck at GND File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/RISC.vhd Line: 23
+    Warning (13410): Pin "reg_7[5]" is stuck at GND File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/RISC.vhd Line: 23
+    Warning (13410): Pin "reg_7[6]" is stuck at GND File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/RISC.vhd Line: 23
+    Warning (13410): Pin "reg_7[7]" is stuck at GND File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/RISC.vhd Line: 23
+    Warning (13410): Pin "reg_7[8]" is stuck at GND File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/RISC.vhd Line: 23
+    Warning (13410): Pin "reg_7[9]" is stuck at GND File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/RISC.vhd Line: 23
+    Warning (13410): Pin "reg_7[10]" is stuck at GND File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/RISC.vhd Line: 23
+    Warning (13410): Pin "reg_7[11]" is stuck at GND File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/RISC.vhd Line: 23
+    Warning (13410): Pin "reg_7[12]" is stuck at GND File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/RISC.vhd Line: 23
+    Warning (13410): Pin "reg_7[13]" is stuck at GND File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/RISC.vhd Line: 23
+    Warning (13410): Pin "reg_7[14]" is stuck at GND File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/RISC.vhd Line: 23
+    Warning (13410): Pin "reg_7[15]" is stuck at GND File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/RISC.vhd Line: 23
+    Warning (13410): Pin "Instruction_returned[0]" is stuck at GND File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/RISC.vhd Line: 25
+    Warning (13410): Pin "Instruction_returned[1]" is stuck at GND File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/RISC.vhd Line: 25
+    Warning (13410): Pin "Instruction_returned[2]" is stuck at GND File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/RISC.vhd Line: 25
+    Warning (13410): Pin "Instruction_returned[3]" is stuck at GND File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/RISC.vhd Line: 25
+    Warning (13410): Pin "Instruction_returned[4]" is stuck at GND File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/RISC.vhd Line: 25
+    Warning (13410): Pin "Instruction_returned[5]" is stuck at GND File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/RISC.vhd Line: 25
+    Warning (13410): Pin "Instruction_returned[6]" is stuck at GND File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/RISC.vhd Line: 25
+    Warning (13410): Pin "Instruction_returned[7]" is stuck at GND File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/RISC.vhd Line: 25
+    Warning (13410): Pin "Instruction_returned[8]" is stuck at GND File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/RISC.vhd Line: 25
+    Warning (13410): Pin "Instruction_returned[9]" is stuck at GND File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/RISC.vhd Line: 25
+    Warning (13410): Pin "Instruction_returned[10]" is stuck at GND File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/RISC.vhd Line: 25
+    Warning (13410): Pin "Instruction_returned[11]" is stuck at GND File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/RISC.vhd Line: 25
+    Warning (13410): Pin "Instruction_returned[12]" is stuck at GND File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/RISC.vhd Line: 25
+    Warning (13410): Pin "Instruction_returned[13]" is stuck at GND File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/RISC.vhd Line: 25
+    Warning (13410): Pin "Instruction_returned[14]" is stuck at GND File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/RISC.vhd Line: 25
+    Warning (13410): Pin "Instruction_returned[15]" is stuck at GND File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/RISC.vhd Line: 25
+    Warning (13410): Pin "cLA_SA_reg_write" is stuck at GND File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/RISC.vhd Line: 32
+    Warning (13410): Pin "cmem_read" is stuck at GND File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/RISC.vhd Line: 33
+    Warning (13410): Pin "cmem_write" is stuck at GND File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/RISC.vhd Line: 34
+    Warning (13410): Pin "cwhich_reg[0]" is stuck at GND File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/RISC.vhd Line: 35
+    Warning (13410): Pin "cwhich_reg[1]" is stuck at GND File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/RISC.vhd Line: 35
+    Warning (13410): Pin "cwhich_reg[2]" is stuck at GND File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/RISC.vhd Line: 35
+    Warning (13410): Pin "cSA_which_reg_control" is stuck at GND File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/RISC.vhd Line: 36
+    Warning (13410): Pin "opcode_out[0]" is stuck at GND File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/RISC.vhd Line: 37
+    Warning (13410): Pin "opcode_out[1]" is stuck at GND File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/RISC.vhd Line: 37
+    Warning (13410): Pin "opcode_out[2]" is stuck at GND File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/RISC.vhd Line: 37
+    Warning (13410): Pin "opcode_out[3]" is stuck at GND File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/RISC.vhd Line: 37
+    Warning (13410): Pin "data_RF_out[0]" is stuck at GND File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/RISC.vhd Line: 38
+    Warning (13410): Pin "data_RF_out[1]" is stuck at GND File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/RISC.vhd Line: 38
+    Warning (13410): Pin "data_RF_out[2]" is stuck at GND File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/RISC.vhd Line: 38
+    Warning (13410): Pin "data_RF_out[3]" is stuck at GND File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/RISC.vhd Line: 38
+    Warning (13410): Pin "data_RF_out[4]" is stuck at GND File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/RISC.vhd Line: 38
+    Warning (13410): Pin "data_RF_out[5]" is stuck at GND File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/RISC.vhd Line: 38
+    Warning (13410): Pin "data_RF_out[6]" is stuck at GND File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/RISC.vhd Line: 38
+    Warning (13410): Pin "data_RF_out[7]" is stuck at GND File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/RISC.vhd Line: 38
+    Warning (13410): Pin "data_RF_out[8]" is stuck at GND File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/RISC.vhd Line: 38
+    Warning (13410): Pin "data_RF_out[9]" is stuck at GND File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/RISC.vhd Line: 38
+    Warning (13410): Pin "data_RF_out[10]" is stuck at GND File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/RISC.vhd Line: 38
+    Warning (13410): Pin "data_RF_out[11]" is stuck at GND File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/RISC.vhd Line: 38
+    Warning (13410): Pin "data_RF_out[12]" is stuck at GND File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/RISC.vhd Line: 38
+    Warning (13410): Pin "data_RF_out[13]" is stuck at GND File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/RISC.vhd Line: 38
+    Warning (13410): Pin "data_RF_out[14]" is stuck at GND File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/RISC.vhd Line: 38
+    Warning (13410): Pin "data_RF_out[15]" is stuck at GND File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/RISC.vhd Line: 38
+    Warning (13410): Pin "ALU_B_out[1]" is stuck at GND File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/RISC.vhd Line: 41
+    Warning (13410): Pin "ALU_B_out[2]" is stuck at GND File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/RISC.vhd Line: 41
+    Warning (13410): Pin "ALU_B_out[3]" is stuck at GND File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/RISC.vhd Line: 41
+    Warning (13410): Pin "ALU_B_out[4]" is stuck at GND File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/RISC.vhd Line: 41
+    Warning (13410): Pin "ALU_B_out[5]" is stuck at GND File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/RISC.vhd Line: 41
+    Warning (13410): Pin "ALU_B_out[6]" is stuck at GND File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/RISC.vhd Line: 41
+    Warning (13410): Pin "ALU_B_out[7]" is stuck at GND File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/RISC.vhd Line: 41
+    Warning (13410): Pin "ALU_B_out[8]" is stuck at GND File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/RISC.vhd Line: 41
+    Warning (13410): Pin "ALU_B_out[9]" is stuck at GND File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/RISC.vhd Line: 41
+    Warning (13410): Pin "ALU_B_out[10]" is stuck at GND File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/RISC.vhd Line: 41
+    Warning (13410): Pin "ALU_B_out[11]" is stuck at GND File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/RISC.vhd Line: 41
+    Warning (13410): Pin "ALU_B_out[12]" is stuck at GND File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/RISC.vhd Line: 41
+    Warning (13410): Pin "ALU_B_out[13]" is stuck at GND File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/RISC.vhd Line: 41
+    Warning (13410): Pin "ALU_B_out[14]" is stuck at GND File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/RISC.vhd Line: 41
+    Warning (13410): Pin "ALU_B_out[15]" is stuck at GND File: D:/IITB/Semester 4/CS 226/Project/IITB-Proc/RISC.vhd Line: 41
+Info (17049): 32 registers lost all their fanouts during netlist optimizations.
+Info (21057): Implemented 418 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 2 input pins
+    Info (21059): Implemented 257 output pins
+    Info (21061): Implemented 159 logic cells
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 354 warnings
+    Info: Peak virtual memory: 4829 megabytes
+    Info: Processing ended: Sun May 30 14:20:44 2021
+    Info: Elapsed time: 00:00:10
+    Info: Total CPU time (on all processors): 00:00:20
+
+

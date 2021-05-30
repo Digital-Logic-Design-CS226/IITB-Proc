@@ -116,7 +116,12 @@ begin
 					
 			
 			when S4 => --pc update
-				nstate <= S5;
+				if cycle_number = 4 then
+					nstate <= S5;
+					cycle_number <= 0;
+				else
+					cycle_number <= cycle_number + 1;
+				end if;
 --				if opcode="0000" or opcode="0010" or opcode="0001" or opcode="0011" then
 --					nstate <= S4;
 --				elsif 
@@ -243,7 +248,7 @@ begin
 				ir_write_t <= '0';
 				reg_read_t <= '0';
 				reg_write_t <= '0';
---				pc_update_t <= '0';
+				pc_update_t <= '0';
 				status_reg_write_t <= '0';
 				LA_SA_reg_write_t <= '0';
 				mem_read_t <= '0';

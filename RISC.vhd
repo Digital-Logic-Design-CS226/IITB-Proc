@@ -8,9 +8,39 @@ use ieee.numeric_std.all;
 
 
 entity RISC  is
-port ( rst: in std_logic;
-indata_received : out std_logic_vector (15 downto 0);
+--port ( rst: in std_logic;
+--indata_received : out std_logic_vector (15 downto 0);
+--clk: in std_logic);
+	port ( rst: in std_logic;
+	indata_received : out std_logic_vector (15 downto 0);
+reg_0 : out std_logic_vector(15 downto 0);
+reg_1 : out std_logic_vector(15 downto 0);
+reg_2 : out std_logic_vector(15 downto 0);
+reg_3 : out std_logic_vector(15 downto 0);
+reg_4 : out std_logic_vector(15 downto 0);
+reg_5 : out std_logic_vector(15 downto 0);
+reg_6 : out std_logic_vector(15 downto 0);
+reg_7 : out std_logic_vector(15 downto 0);
+PC_out_1 : out std_logic_vector(15 downto 0);
+Instruction_returned : out std_logic_vector(15 downto 0);
+cpc_wrt : out std_logic;
+cir_write : out std_logic;
+creg_read : out std_logic;
+creg_write : out std_logic;
+cpc_update : out std_logic;
+cstatus_reg_write : out std_logic;
+cLA_SA_reg_write : out std_logic;
+cmem_read : out std_logic;
+cmem_write : out std_logic;
+cwhich_reg : out std_logic_vector(2 downto 0);
+cSA_which_reg_control : out std_logic;
+opcode_out : out std_logic_vector(3 downto 0);
+data_RF_out : out std_logic_vector(15 downto 0);
+ALU_output_tb : out std_logic_vector(15 downto 0);
+ALU_A_out : out std_logic_vector (15 downto 0);
+ALU_B_out : out std_logic_vector (15 downto 0);
 clk: in std_logic);
+
 end entity;
 
 architecture behaviour of RISC is
@@ -29,33 +59,33 @@ signal mem_read : std_logic;
 signal mem_write : std_logic;
 signal which_reg : std_logic_vector(2 downto 0);
 signal SA_which_reg_control : std_logic;
-signal reg_0 : std_logic_vector(15 downto 0);
-signal reg_1 : std_logic_vector(15 downto 0);
-signal reg_2 : std_logic_vector(15 downto 0);
-signal reg_3 : std_logic_vector(15 downto 0);
-signal reg_4 : std_logic_vector(15 downto 0);
-signal reg_5 : std_logic_vector(15 downto 0);
-signal reg_6 : std_logic_vector(15 downto 0);
-signal reg_7 : std_logic_vector(15 downto 0);
-signal PC_out_1 : std_logic_vector(15 downto 0);
-signal Instruction_returned : std_logic_vector(15 downto 0);
-signal cpc_wrt : std_logic;
-signal cir_write : std_logic;
-signal creg_read : std_logic;
-signal creg_write : std_logic;
-signal cpc_update : std_logic;
-signal cstatus_reg_write : std_logic;
-signal cLA_SA_reg_write : std_logic;
-signal cmem_read : std_logic;
-signal cmem_write : std_logic;
-signal cwhich_reg : std_logic_vector(2 downto 0);
-signal cSA_which_reg_control : std_logic;
-signal opcode_out : std_logic_vector(3 downto 0);
-signal data_RF_out : std_logic_vector(15 downto 0);
-signal ALU_output_tb : std_logic_vector(15 downto 0);
-signal ALU_A_out : std_logic_vector (15 downto 0);
-signal ALU_B_out : std_logic_vector (15 downto 0);
-
+--signal reg_0 : std_logic_vector(15 downto 0);
+--signal reg_1 : std_logic_vector(15 downto 0);
+--signal reg_2 : std_logic_vector(15 downto 0);
+--signal reg_3 : std_logic_vector(15 downto 0);
+--signal reg_4 : std_logic_vector(15 downto 0);
+--signal reg_5 : std_logic_vector(15 downto 0);
+--signal reg_6 : std_logic_vector(15 downto 0);
+--signal reg_7 : std_logic_vector(15 downto 0);
+--signal PC_out_1 : std_logic_vector(15 downto 0);
+--signal Instruction_returned : std_logic_vector(15 downto 0);
+--signal cpc_wrt : std_logic;
+--signal cir_write : std_logic;
+--signal creg_read : std_logic;
+--signal creg_write : std_logic;
+--signal cpc_update : std_logic;
+--signal cstatus_reg_write : std_logic;
+--signal cLA_SA_reg_write : std_logic;
+--signal cmem_read : std_logic;
+--signal cmem_write : std_logic;
+--signal cwhich_reg : std_logic_vector(2 downto 0);
+--signal cSA_which_reg_control : std_logic;
+--signal opcode_out : std_logic_vector(3 downto 0);
+--signal data_RF_out : std_logic_vector(15 downto 0);
+--signal ALU_output_tb : std_logic_vector(15 downto 0);
+--signal ALU_A_out : std_logic_vector (15 downto 0);
+--signal ALU_B_out : std_logic_vector (15 downto 0);
+--
 
 
 component Control_unit

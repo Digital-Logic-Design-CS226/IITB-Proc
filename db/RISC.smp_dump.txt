@@ -1,0 +1,26 @@
+
+State Machine - |RISC|Control_unit:CU|nstate
+Name nstate.S8 nstate.S7 nstate.S6 nstate.S5 nstate.S4 nstate.S3 nstate.S2 nstate.S1 nstate.S0 nstate.start 
+nstate.start 0 0 0 0 0 0 0 0 0 0 
+nstate.S0 0 0 0 0 0 0 0 0 1 1 
+nstate.S1 0 0 0 0 0 0 0 1 0 1 
+nstate.S2 0 0 0 0 0 0 1 0 0 1 
+nstate.S3 0 0 0 0 0 1 0 0 0 1 
+nstate.S4 0 0 0 0 1 0 0 0 0 1 
+nstate.S5 0 0 0 1 0 0 0 0 0 1 
+nstate.S6 0 0 1 0 0 0 0 0 0 1 
+nstate.S7 0 1 0 0 0 0 0 0 0 1 
+nstate.S8 1 0 0 0 0 0 0 0 0 1 
+
+State Machine - |RISC|Control_unit:CU|pstate
+Name pstate.S8 pstate.S7 pstate.S6 pstate.S5 pstate.S4 pstate.S3 pstate.S2 pstate.S1 pstate.S0 pstate.start 
+pstate.start 0 0 0 0 0 0 0 0 0 0 
+pstate.S0 0 0 0 0 0 0 0 0 1 1 
+pstate.S1 0 0 0 0 0 0 0 1 0 1 
+pstate.S2 0 0 0 0 0 0 1 0 0 1 
+pstate.S3 0 0 0 0 0 1 0 0 0 1 
+pstate.S4 0 0 0 0 1 0 0 0 0 1 
+pstate.S5 0 0 0 1 0 0 0 0 0 1 
+pstate.S6 0 0 1 0 0 0 0 0 0 1 
+pstate.S7 0 1 0 0 0 0 0 0 0 1 
+pstate.S8 1 0 0 0 0 0 0 0 0 1 

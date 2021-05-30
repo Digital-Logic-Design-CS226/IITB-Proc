@@ -18,7 +18,7 @@ signal output : std_logic_vector(15 downto 0) := (others => '0');
 --2^16 short word memory
 constant ram_depth : natural := 2**16;
 constant ram_width : natural := 16;
-constant lines_in_file : natural := 25;
+constant lines_in_file : natural := 6;
 type mem is array(2**16-1 downto 0) of std_logic_vector(15 downto 0);
 
 

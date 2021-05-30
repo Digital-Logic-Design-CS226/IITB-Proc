@@ -69,6 +69,7 @@ signal Z_out : std_logic;
 signal LA_SA_wire : std_logic_vector(15 downto 0);
 signal mem_add_in : std_logic_vector(15 downto 0);
 signal RA_RF : std_logic_vector(2 downto 0);
+signal decision : std_logic;
 
 component PC
 port ( indata : in std_logic_vector (15 downto 0);
