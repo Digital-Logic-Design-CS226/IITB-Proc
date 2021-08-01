@@ -1,6 +1,6 @@
 # IITB-Proc
 
-Change the file path and number of lines (these are hardcoded) in instruction memory.vhd according to testing setup.
+Change the file path and number of lines (these are hardcoded) in instruction memory.vhd according to testing setup. Load the files in Quartus, compile and do the simulations.
 
 FSM, RTL and Components are present in Theory Folder.
 
